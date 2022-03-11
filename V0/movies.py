@@ -1,4 +1,4 @@
-API_KEY = ""
+from config import API_KEY
 
 
 class Movie:
