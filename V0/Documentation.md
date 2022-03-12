@@ -15,4 +15,5 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 ### Conception
 
 Le site est géré avec Django.
+<br>
 Les informations sur un films sont récupérées dans l'API TMDB.
