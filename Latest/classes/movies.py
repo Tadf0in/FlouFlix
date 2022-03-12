@@ -1,5 +1,5 @@
-from config import API_KEY
 import requests as r
+from classes.config import API_KEY
 
 
 class Movie:
@@ -13,7 +13,7 @@ class Movie:
 
         self._title = response['title']
         self._description = response['overview']
-        self._img = response['poster_path']
+        self._img = 'https://image.tmdb.org/t/p/w500' + response['poster_path']
         self._date = response['release_date']
 
 # Getters
@@ -57,3 +57,13 @@ class Movie:
     @date.setter
     def set_date(self, date):
         self._date = date
+
+    
+    def context(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "img": self.img,
+            "date": self.date,
+        }
