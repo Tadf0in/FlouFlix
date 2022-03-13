@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <title>FlouFlix</title>
+</head>
+<body>
+    <div class="saison">
+        Nom de la série: {{ serie.name }}
+        <br>
+        Nom de la saison: {{ name }}
+        <br>
+        <img src={{ img }}>
+        <br>
+        Description : {{ description }}
+        <br>
+        Date : {{ date }}
+        <br>
+        Episodes : {{ no_episodes }}
+        <ul>
+            {% for episode in episodes %}
+            <li>
+                {{ episode.name }}
+                <br>
+                <img src={{ episode.img }}>
+                <br>
+                {{ episode.description }}
+            </li>
+            {% endfor %}
+        </ul>
+        
+    </div>
+</body>
+</html>
