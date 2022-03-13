@@ -9,7 +9,9 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 - V1 :
   * Création des classes : Serie, Season et Episode
+  * L'application django 'movie' devient l'application plus générale 'browse', qui ne contiendra pas que les films
   * Ajout de la page serie/$id$ qui récupère les informations sur une série (dont l'id est précisé dans l'url) et les affiches
+  * Ajout de la page serie/$id$/S$num$ qui récupère les informations sur une saison (dont le numéro et l'id sont précisé dans l'url) et les affiches ainsi que la listes de tous les épisodes
   * Ajout d'un favicon (+ gestion du dossier 'static')
 - V0 :
   * Initialisation du projet django

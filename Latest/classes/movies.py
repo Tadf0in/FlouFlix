@@ -37,28 +37,7 @@ class Movie:
     def date(self):
         return self._date
 
-# Setters
-    @id.setter
-    def set_id(self, id):
-        self._id = id
 
-    @title.setter
-    def set_title(self, title):
-        self._title = title
-    
-    @description.setter
-    def set_description(self, description):
-        self._description = description
-    
-    @img.setter
-    def set_img(self, img):
-        self._img = img
-    
-    @date.setter
-    def set_date(self, date):
-        self._date = date
-
-    
     def context(self):
         return {
             "id": self.id,

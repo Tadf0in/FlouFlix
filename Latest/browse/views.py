@@ -10,3 +10,6 @@ def movie(request, id):
 
 def serie(request, id):
     return render(request, "serie.html", context=Serie(id).context())
+
+def season(request, serie_id, season_num):
+    return render(request, "season.html", context=Season(serie_id, season_num).context())

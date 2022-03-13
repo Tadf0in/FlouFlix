@@ -1,4 +1,5 @@
 import requests as r
+import json
 from classes.config import API_KEY
 
 
@@ -17,7 +18,6 @@ class Serie:
         self._date = response['first_air_date']
         self._no_seasons = response['number_of_seasons']
         self._no_episodes = response['number_of_episodes']
-
 
 # Getters
     @property
@@ -48,35 +48,6 @@ class Serie:
     def no_episodes(self):
         return self._no_episodes
 
-# Setters
-    @id.setter
-    def set_id(self, id):
-        self._id = id
-
-    @name.setter
-    def set_name(self, name):
-        self._name = name
-    
-    @description.setter
-    def set_description(self, description):
-        self._description = description
-    
-    @img.setter
-    def set_img(self, img):
-        self._img = img
-    
-    @date.setter
-    def set_date(self, date):
-        self._date = date
-
-    @no_seasons.setter
-    def set_no_seasons(self, no_seasons):
-        self._no_seasons = no_seasons
-
-    @no_episodes.setter
-    def set_no_episodes(self, no_episodes):
-        self._no_episodes = no_episodes
-
     
     def context(self):
         return {
@@ -93,10 +64,11 @@ class Serie:
 
 class Season:
     def __init__(self, serie_id, num):
-        self._serie_id = serie_id
+        self._serie = Serie(serie_id)
+        self._serie_id = self.serie.id
         self._num = num
 
-        api_url = f"https://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.num}/?api_key={API_KEY}&language=fr"
+        api_url = f"https://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.num}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
         # print(json.dumps(response, sort_keys=True, indent=4))
@@ -106,7 +78,15 @@ class Season:
         self._img = 'https://image.tmdb.org/t/p/w500' + response['poster_path']
         self._date = response['air_date']
 
+        self._episodes = []
+        for episode in response['episodes']:
+            self._episodes.append(Episode(self.serie_id, num, episode['episode_number']))
+
 # Getters
+    @property
+    def serie(self):
+        return self._serie
+
     @property
     def serie_id(self):
         return self._serie_id
@@ -131,40 +111,21 @@ class Season:
     def date(self):
         return self._date
 
-# Setters
-    @serie_id.setter
-    def set_serie_id(self, serie_id):
-        self._serie_id = serie_id
-
-    @num.setter
-    def set_num(self, num):
-        self._num = num
-
-    @name.setter
-    def set_name(self, name):
-        self._name = name
-    
-    @description.setter
-    def set_description(self, description):
-        self._description = description
-    
-    @img.setter
-    def set_img(self, img):
-        self._img = img
-    
-    @date.setter
-    def set_date(self, date):
-        self._date = date
+    @property
+    def episodes(self):
+        return self._episodes
 
     
     def context(self):
         return {
+            "serie": self.serie,
             "serie_id": self.serie_id,
             "num": self.num,
             "name": self.name,
             "description": self.description,
             "img": self.img,
             "date": self.date,
+            "episodes": self.episodes,
         }
 
 
@@ -176,6 +137,7 @@ class Episode:
         self._episode_num = episode_num
 
         api_url = f"https://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.season_num}/episode/{self.episode_num}?api_key={API_KEY}&language=fr"
+        print(api_url)
 
         response = r.get(api_url).json()
         # print(json.dumps(response, sort_keys=True, indent=4))
@@ -213,35 +175,6 @@ class Episode:
     @property
     def date(self):
         return self._date
-
-# Setters
-    @serie_id.setter
-    def set_serie_id(self, serie_id):
-        self._serie_id = serie_id
-
-    @season_num.setter
-    def set_season_num(self, season_num):
-        self._season_num = season_num
-        
-    @episode_num.setter
-    def set_episode_num(self, episode_num):
-        self._episode_num = episode_num
-
-    @name.setter
-    def set_name(self, name):
-        self._name = name
-    
-    @description.setter
-    def set_description(self, description):
-        self._description = description
-    
-    @img.setter
-    def set_img(self, img):
-        self._img = img
-    
-    @date.setter
-    def set_date(self, date):
-        self._date = date
 
     
     def context(self):
