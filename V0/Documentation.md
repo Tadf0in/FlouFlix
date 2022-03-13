@@ -7,13 +7,15 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 ### Changelog
 
-- V0 :
+- V0:
   * Initialisation du projet django
+  * Création de l'application django intitulée 'movie'
   * Création de la classe Movie
+  * Ajout de la page movie/$id$ qui récupère les informations sur un film (dont l'id est précisé dans l'url) et les affiches
 
 
 ### Conception
 
 Le site est géré avec Django.
 <br>
-Les informations sur un films sont récupérées dans l'API TMDB.
+Les informations sur un film sont récupérées dans l'API TMDB.
