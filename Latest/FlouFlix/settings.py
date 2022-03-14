@@ -55,7 +55,7 @@ ROOT_URLCONF = 'FlouFlix.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['browse/templates'],
+        'DIRS': ['browse/templates', 'FlouFLix/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

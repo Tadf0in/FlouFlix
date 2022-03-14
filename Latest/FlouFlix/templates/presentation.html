@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/presentation.css' %}">
+    <title>FlouFlix</title>
+</head>
+<body>
+    <div class="presentation">
+        <img src="{% static 'img/logo-django.png' %}">
+        <hr>
+        <p>
+            Django est un framework Web Python de haut niveau qui encourage un développement rapide et une conception propre et pragmatique. 
+            Construit par des développeurs expérimentés, il prend en charge une grande partie des tracas du développement Web, 
+            vous pouvez donc vous concentrer sur l'écriture de votre application sans avoir à réinventer la roue. C'est gratuit et open source.
+        </p>
+
+        <ul>
+            <li>Conçu pour faire passer le concept à la réalisation le plus rapidement possible.</li>
+
+            <li>Aide à éviter de nombreuses erreurs de sécurité courantes.</li>
+    
+            <li>Certains des sites les plus fréquentés du Web utilisent Django (Instagram, Pinterest, Mozilla, ...).</li>    
+        </ul>
+        
+    </div>
+</body>
+</html>
