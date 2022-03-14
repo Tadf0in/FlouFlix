@@ -7,7 +7,7 @@ class Serie:
     def __init__(self, id):
         self._id = id
 
-        api_url = f"https://api.themoviedb.org/3/tv/{self.id}?api_key={API_KEY}&language=fr"
+        api_url = f"http://api.themoviedb.org/3/tv/{self.id}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
         # print(json.dumps(response, sort_keys=True, indent=4))
@@ -68,7 +68,7 @@ class Season:
         self._serie_id = self.serie.id
         self._num = num
 
-        api_url = f"https://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.num}?api_key={API_KEY}&language=fr"
+        api_url = f"http://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.num}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
         # print(json.dumps(response, sort_keys=True, indent=4))
@@ -136,7 +136,7 @@ class Episode:
         self._season_num = season_num
         self._episode_num = episode_num
 
-        api_url = f"https://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.season_num}/episode/{self.episode_num}?api_key={API_KEY}&language=fr"
+        api_url = f"http://api.themoviedb.org/3/tv/{self.serie_id}/season/{self.season_num}/episode/{self.episode_num}?api_key={API_KEY}&language=fr"
         print(api_url)
 
         response = r.get(api_url).json()

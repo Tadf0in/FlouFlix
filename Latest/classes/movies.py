@@ -6,7 +6,7 @@ class Movie:
     def __init__(self, id):
         self._id = id
 
-        api_url = f"https://api.themoviedb.org/3/movie/{self.id}?api_key={API_KEY}&language=fr"
+        api_url = f"http://api.themoviedb.org/3/movie/{self.id}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
         # print(json.dumps(response, sort_keys=True, indent=4))
