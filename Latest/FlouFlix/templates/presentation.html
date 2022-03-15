@@ -14,20 +14,57 @@
     <div class="presentation">
         <img src="{% static 'img/logo-django.png' %}">
         <hr>
-        <p>
-            Django est un framework Web Python de haut niveau qui encourage un développement rapide et une conception propre et pragmatique. 
-            Construit par des développeurs expérimentés, il prend en charge une grande partie des tracas du développement Web, 
-            vous pouvez donc vous concentrer sur l'écriture de votre application sans avoir à réinventer la roue. C'est gratuit et open source.
-        </p>
-
         <ul>
-            <li>Conçu pour faire passer le concept à la réalisation le plus rapidement possible.</li>
+            <li>Framework Web Python de haut niveau</li>
 
-            <li>Aide à éviter de nombreuses erreurs de sécurité courantes.</li>
+            <li>Construit par des développeurs expérimentés.</li>
+
+            <li>Gère de nombreux problèmes rencontrés durant le développement Web</li>
+            
+            <li>Gratuit et open source</li>
+
+            <li>Conçu pour faire passer le concept à la réalisation le plus rapidement possible</li>
+
+            <li>Aide à éviter de nombreuses erreurs de sécurité courantes</li>
     
-            <li>Certains des sites les plus fréquentés du Web utilisent Django (Instagram, Pinterest, Mozilla, ...).</li>    
+            <li>Certains des sites les plus fréquentés du Web utilisent Django (Instagram, Pinterest, Mozilla, ...)</li>    
         </ul>
-        
+    </div>
+    <div class="exemples">
+        <h1>Exemples</h1>
+        <h4>Fonctionnement simplifié d'une application :</h4>
+        <div class="exemple1">
+            <p>
+                Un projet Django va être constitué d'une ou plusieurs applications. <br>
+                Chaque application va avoir la structure par défaut suivante : <br>
+                <br>
+                &nbsp;&nbsp;&nbsp; <img src="{% static 'img/structure-app.png' %}"> <br>
+                <br>
+                Les fichiers qui vont nous intéresser en particulier sont : <i>views.py</i>  et <i>urls.py</i>
+            </p>
+    
+            <h5>views.py</h5>
+            <p class="fichier">
+                C'est ce ficier qui va dire ce que nous renvoie une page consultée. <br>
+                Par exemple, la fonction <strong>index</strong> du fichier ci-dessous va nous retourner une page affichant "Hello, world." <br>
+                <br>
+                <img src="{% static 'img/views-py.png' %}">
+            </p>
+    
+            <h5>urls.py</h5>
+            <p class="fichier">
+                Ce fichier va servir de répertoire, c'est lui qui va rediriger vers la bonne page en regardant l'url. <br>
+                Dans ce fichier on importe le fichier <i>views.py</i> vu précedemment. <br>
+                <br>
+                <img src="{% static 'img/urls-py.png' %}"> <br>
+                C'est la variable <strong>urlpatterns</strong> qui va lister toutes les pages de l'application. <br>
+                Par exemple ici, le 1er argument de <strong>path</strong> est une chaîne de caractère vide, ce qui correspond à la page affichée à la racine de l'application. <br>
+                Cette fonction <strong>path</strong> définit alors que la page à la racine de l'application affichera ce que retourne la fonction <strong>index</strong> du fichier <i>views</i> vu précedemment. <br>
+                Si l'on se rend sur cette page on verra donc afficher "Hello, World."
+            </p>   
+        </div>  
+
+        <h4>Templates </h4>
     </div>
 </body>
 </html>
