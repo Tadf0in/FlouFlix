@@ -87,7 +87,32 @@
                 Dans notre application nous allons créer un nouveau dossier <i>templates</i> où l'on ajoutera un fichier html à l'intérieur. <br>
                 C'est ce fichier qui servira donc de patterne pour nos pages à afficher. <br>
                 Un template est donc, dans ce cas, une page html classique, à l'exception où certaines valeurs peuvent êtres variables. <br>
-                En effet, django utilise des variables et des balises, definies respectivements par <strong>{ { nom_de_la_variable } }</strong> et <strong>{ % balise % }</strong>
+                En effet, django utilise des variables et des balises, definies respectivements par <strong>{<vide>{ nom_de_la_variable }</vide>}</strong> et <strong>{<vide>% balise %</vide>}</strong> <br>
+                <br>
+                <img src="{% static 'img/template.png' %}">
+                <br>
+                Par exemple, le fichier <i>template.html</i> ci-dessus affichera la valeur de la variable <strong>ma_variable</strong>. <br>
+            </p>
+            <p class="souspartie">
+                Nous avons maintenant un template affichant la valeur de <strong>ma_variable</strong>, cependant, il faut encore lui préciser la valeur de cette variable. <br>
+                On peut par exemple indiquer sa valeur dans l'url grâce au fichier <i>urls.py</i> suivant : <br>
+                <br>
+                <img src="{% static 'img/url-variable.png' %}"> <br>
+                <br>
+                Désormais, la fonction <strong>path</strong> sera appelé avec un argument : <strong>ma_variable</strong> (dont la valeur sera celle indiqué dans l'url). <br>
+                Il faut donc modifier aussi le fichier <i>views.py</i> pour qu'il prenne en compte cette variable : <br>
+                <br>
+                <img src="{% static 'img/views-variable.png' %}"> <br>
+                <br>
+                Ici, on note plusieurs qu'on utilise une fonction <strong>render</strong> et non <strong>HttpResponse</strong>. <br>
+                C'est cette fonction qui va nous permettre d'utiiser les templates. <br>
+                En argument de cette fonction, on lui précise le template à utiliser (ici le fichier <i>template.html</i> vu précedemment), et le contexte. <br>
+                Le contexte est un dictionnaire associant une clé à une variable. C'est ces clés de ce dictionnaire qui seront appelées par le template. <br>
+                <br>
+                Ici on ajoute donc une clé <strong>ma_variable</strong> dans le contexte pour correspondre à ce que l'on avait dans le fichier <i>template.html</i>. <br>
+                <br>
+                <br>
+                Finalement, lorsque l'on se rendra par exemple sur la page 'myapp/3630', il sera affiché : "Ma variable : 3630".
             </p>
         </div>
     </div>
