@@ -16,6 +16,8 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
   * Ajout d'un header inclut dans toutes les pages
   * Un peu de css pour le style
 
+<br>
+
 - **V1** &nbsp;&nbsp; *Ajout d'une page affichant toutes les informations sur une saison et ses épisodes*
 
   * Création des classes : Serie, Season et Episode
