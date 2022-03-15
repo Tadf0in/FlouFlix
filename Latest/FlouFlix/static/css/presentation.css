@@ -51,13 +51,13 @@ h4 {
     padding-top: 30px;
 }
 
-.exemple1 {
+.exemple {
     margin-left: 50px;
 }
-.exemple1 p {
+.exemple p {
     font-size: 16px;
 }
 
-.fichier {
+.fichier, .souspartie {
     margin-left: 40px;
 }

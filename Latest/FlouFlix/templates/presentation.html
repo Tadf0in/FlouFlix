@@ -32,8 +32,8 @@
     </div>
     <div class="exemples">
         <h1>Exemples</h1>
-        <h4>Fonctionnement simplifié d'une application :</h4>
-        <div class="exemple1">
+        <h4>1) Fonctionnement simplifié d'une application :</h4>
+        <div class="exemple">
             <p>
                 Un projet Django va être constitué d'une ou plusieurs applications. <br>
                 Chaque application va avoir la structure par défaut suivante : <br>
@@ -61,10 +61,35 @@
                 Par exemple ici, le 1er argument de <strong>path</strong> est une chaîne de caractère vide, ce qui correspond à la page affichée à la racine de l'application. <br>
                 Cette fonction <strong>path</strong> définit alors que la page à la racine de l'application affichera ce que retourne la fonction <strong>index</strong> du fichier <i>views</i> vu précedemment. <br>
                 Si l'on se rend sur cette page on verra donc afficher "Hello, World."
-            </p>   
+            </p>  
+            <br>
+            <p>
+                Il ne reste plus qu'à ajouter ce fichier répertoire de l'application dans le fichier repertoire du projet pour l'intégrer : <br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="{% static 'img/project-urls-py.png' %}"> <br> 
+                <br>
+                Ici on définit alors que la page myapp/ affichera les pages selon le fichier 'urls.py' de l'application vue précedemment. <br>
+                Si l'on se rend alors sur la page myapp/ (racine de l'application) on verra alors affiché "Hello, World.", comme définit précedemment.
+            </p>
+            
         </div>  
 
-        <h4>Templates </h4>
+        <h4>2) Templates et variables :</h4>
+        <div class="exemple">
+            <p>
+                Nous avons vu dans l'exemple précedent qu'une page pouvait afficher du texte. <br>
+                Cependant, cela va devenir vite ennuyant pour créer une page complète, on ne va pas afficher les lignes une par une. <br>
+                On va donc utiliser le principe des templates.
+            </p>
+
+            <h5>templates</h5>
+            <p class="souspartie">
+                Dans notre application nous allons créer un nouveau dossier <i>templates</i> où l'on ajoutera un fichier html à l'intérieur. <br>
+                C'est ce fichier qui servira donc de patterne pour nos pages à afficher. <br>
+                Un template est donc, dans ce cas, une page html classique, à l'exception où certaines valeurs peuvent êtres variables. <br>
+                En effet, django utilise des variables et des balises, definies respectivements par <strong>{ { nom_de_la_variable } }</strong> et <strong>{ % balise % }</strong>
+            </p>
+        </div>
     </div>
 </body>
 </html>
