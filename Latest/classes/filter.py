@@ -1,14 +1,11 @@
-import imp
-from charset_normalizer import api
-from markupsafe import re
 import requests as r
 from classes.config import API_KEY
 from classes.movies import Movie
 from classes.series import Serie
 
 
-def movie_filter(filtre):
-    api_url = f"http://api.themoviedb.org/3/movie/{filtre}?api_key={API_KEY}&language=fr"
+def movie_popular():
+    api_url = f"http://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=fr"
     response = r.get(api_url).json()
 
     movies = []
@@ -18,8 +15,8 @@ def movie_filter(filtre):
     return movies
 
 
-def serie_filter(filtre):
-    api_url = f"http://api.themoviedb.org/3/tv/{filtre}?api_key={API_KEY}&language=fr"
+def serie_popular():
+    api_url = f"http://api.themoviedb.org/3/tv/popular?api_key={API_KEY}&language=fr"
     response = r.get(api_url).json()
 
     movies = []
@@ -29,9 +26,9 @@ def serie_filter(filtre):
     return movies
 
 
-def total_filter(filtre):
+def total_popular():
     return {
-        'filter': filtre,
-        'movies': movie_filter(filtre),
-        'series': serie_filter(filtre),
+        'filter': 'popular',
+        'movies': movie_popular(),
+        'series': serie_popular(),
     }

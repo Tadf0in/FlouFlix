@@ -2,15 +2,15 @@ from django.shortcuts import render
 from markupsafe import re
 from classes.movies import Movie
 from classes.series import Serie, Season, Episode
-from classes.filter import total_filter
+from classes.filter import total_popular
 
 
 def index(request):
     return render(request, "index.html", context={'filter': None})
 
 
-def filter(request, filter):
-    return render(request, "index.html", context=total_filter(filter))
+def popular(request):
+    return render(request, "index.html", context=total_popular())
 
 
 def movie(request, id):
