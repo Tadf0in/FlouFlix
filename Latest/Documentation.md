@@ -13,7 +13,8 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 - **V2** &nbsp;&nbsp;
 
   * Page de présentation de la technologie utilisée (/presentation/)
-  * Ajout d'un header inclut dans toutes les pages
+  * Pages browse/  ,   browse/popular/  et  browse/new/
+  * Ajout d'un header inclus dans toutes les pages
   * Un peu de css pour le style
 
 <br>
