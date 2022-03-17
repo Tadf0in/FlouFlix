@@ -1,9 +1,0 @@
-- [X] Film
-- [X] Série
-- [X] Saison
-- [ ] Episode
-- [ ] Nouveautés
-- [ ] Populaire
-- [ ] WatchList
-- [ ] Css
-- [ ] Profils
