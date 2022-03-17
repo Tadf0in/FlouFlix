@@ -78,11 +78,19 @@ header .header-right li a {
     padding-top: 10px;
     font-weight: 700;
 }
-.popular img, .upcoming img {
+.popular img, .upcoming img, .latest-movie img, .latest-serie img {
     height: 350px;
     width: 250px;
 }
 .popular img:hover, .upcoming img:hover {
     height: 560px;
     width: 400px;
+}
+
+
+.latest-div {
+    display: flex;
+}
+.latest-movie, .latest-serie {
+    width: 49%;
 }
