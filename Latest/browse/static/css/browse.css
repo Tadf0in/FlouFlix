@@ -59,13 +59,13 @@ header .header-right li a {
 
 
 
-.filter-movies, .filter-series {
+.popular-movies, .popular-series, .upcoming {
     height: 550px;
     display: flex;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
-.filter-movie, .filter-serie {
+.popular-movie, .popular-serie, .upcoming-movie {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,15 +74,15 @@ header .header-right li a {
     color: #eee;
     text-decoration: none;
 }
-.filter-movie-title, .filter-serie-title {
+.popular-movie-title, .popular-serie-title, .upcoming-movie-title {
     padding-top: 10px;
     font-weight: 700;
 }
-.filter img {
+.popular img, .upcoming img {
     height: 350px;
     width: 250px;
 }
-.filter img:hover {
+.popular img:hover, .upcoming img:hover {
     height: 560px;
     width: 400px;
 }

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from markupsafe import re
 from classes.movies import Movie
 from classes.series import Serie, Season, Episode
-from classes.filter import total_popular
+from classes.filter import total_popular, upcoming
 
 
 def index(request):
@@ -10,7 +10,11 @@ def index(request):
 
 
 def popular(request):
-    return render(request, "index.html", context=total_popular())
+    return render(request, "popular.html", context=total_popular())
+
+
+def latest(request):
+    return render(request, "latest.html", context=upcoming()) 
 
 
 def movie(request, id):

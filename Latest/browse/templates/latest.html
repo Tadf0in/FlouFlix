@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/browse.css' %}">
+    <title>FlouFlix</title>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="content latest">
+
+        <h1>À venir</h1>
+            <div class="upcoming">
+            {% for movie in upcoming_movies %}
+                <a href="/browse/movie/{{ movie.id }}/" class="upcoming-movie">
+                    <img src={{ movie.img }}>
+                    <span class="upcoming-movie-title">{{ movie.title }}</span>
+                </a>
+            {% endfor %}
+            </div>
+
+    </div>
+
+
+    <!-- Scroll horizontal -->
+    <script> 
+        const scrollMovie = document.querySelector(".upcoming");
+
+        scrollMovie.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollMovie.scrollLeft += evt.deltaY;
+        });
+    </script>
+
+</body>
+</html>

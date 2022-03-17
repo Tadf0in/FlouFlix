@@ -13,7 +13,10 @@ class Movie:
 
         self._title = response['title']
         self._description = response['overview']
-        self._img = 'https://image.tmdb.org/t/p/w500' + response['poster_path']
+        if response['poster_path'] != None:
+            self._img = 'https://image.tmdb.org/t/p/w500' + response['poster_path']
+        else: 
+            self._img = 'https://i.pinimg.com/originals/72/24/f6/7224f6d53614cedbf8cef516b705a555.jpg'
         self._date = response['release_date']
 
 # Getters
