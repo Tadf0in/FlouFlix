@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from . import views
+from browse import views as browse_views
 
 urlpatterns = [
     path('browse/', include('browse.urls')),
     path('admin/', admin.site.urls),
-    path('presentation/', views.presentation)
+    path('presentation/', views.presentation),
+    
+    path('search/<str:query>', browse_views.search)
 ]

@@ -64,3 +64,10 @@ def upcoming():
         'latest_movie': latest_movie(),
         'latest_serie': latest_serie(),
     }
+
+
+def search_query(query):
+    api_url = f"http://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=fr&query={query}"
+    response = r.get(api_url).json()
+
+    
