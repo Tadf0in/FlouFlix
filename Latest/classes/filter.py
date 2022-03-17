@@ -1,4 +1,6 @@
 import imp
+from charset_normalizer import api
+from markupsafe import re
 import requests as r
 from classes.config import API_KEY
 from classes.movies import Movie

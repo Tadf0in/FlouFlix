@@ -54,3 +54,31 @@ header .header-right li a {
 .content {
     padding: 20px;
 }
+
+
+
+.filter-movies, .filter-series {
+    display: flex;
+    overflow-x: scroll;
+}
+.filter-movie, .filter-serie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 15px;
+    color: #eee;
+    text-decoration: none;
+}
+.filter-movie-title, .filter-serie-title {
+    padding-top: 10px;
+    font-weight: 700;
+}
+.filter img {
+    height: 350px;
+    width: 250px;
+}
+.filter img:hover {
+    height: 560px;
+    width: 400px;
+}

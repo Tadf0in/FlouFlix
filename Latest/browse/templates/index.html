@@ -16,10 +16,45 @@
     <div class="content filter">
 
         {% if filter != None %}
+            <h1>Films</h1>
+            <div class="filter-movies">
+            {% for movie in movies %}
+                <a href="/browse/movie/{{ movie.id }}/" class="filter-movie">
+                    <img src={{ movie.img }}>
+                    <span class="filter-movie-title">{{ movie.title }}</span>
+                </a>
+            {% endfor %}
+            </div>
 
-            {{ filter }}
-        
+            <br>
+            <br>
+
+            <h1>Séries</h1>
+            <div class="filter-series">
+                {% for serie in series %}
+                    <a href="/browse/serie/{{ serie.id }}/" class="filter-serie">
+                        <img src={{ serie.img }}>
+                        <span class="filter-serie-title">{{ serie.name }}</span>
+                    </a>
+                {% endfor %}
+                </div>
         {% endif %}
+
+        
+        <!-- Scroll horizontal -->
+        <script> 
+            const scrollMovie = document.querySelector(".filter-movies");
+            const scrollSerie = document.querySelector(".filter-series");
+
+            scrollMovie.addEventListener("wheel", (evt) => {
+                evt.preventDefault();
+                scrollMovie.scrollLeft += evt.deltaY;
+            });
+            scrollSerie.addEventListener("wheel", (evt) => {
+                evt.preventDefault();
+                scrollSerie.scrollLeft += evt.deltaY;
+            });
+        </script>
 
     </div>
 </body>
