@@ -1,5 +1,5 @@
 import requests as r
-from classes.config import API_KEY
+from .config import API_KEY
 
 
 class Movie:

@@ -1,7 +1,7 @@
 import requests as r
-from classes.config import API_KEY
-from classes.movies import Movie
-from classes.series import Serie
+from .config import API_KEY
+from .movies import Movie
+from .series import Serie
 
 
 def movie_popular():
