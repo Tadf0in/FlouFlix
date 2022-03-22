@@ -21,7 +21,6 @@ from browse import views as browse_views
 urlpatterns = [
     path('', include('browse.urls')),
     path('browse/', include('browse.urls')),
-    path('watchlist/', include('browse.urls')),
 
     path('admin/', admin.site.urls),
     path('presentation/', views.presentation),

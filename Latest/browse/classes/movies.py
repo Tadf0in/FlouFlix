@@ -3,6 +3,9 @@ from .config import API_KEY
 
 
 class Movie:
+    """
+    Passe les informations d'un film récupérées dans l'API TMDB sous forme de classe.
+    """
     def __init__(self, id):
         self._id = id
 
@@ -41,7 +44,11 @@ class Movie:
         return self._date
 
 
-    def context(self):
+    def context(self) -> dict :
+        """ Renvoie sous forme de dictionnaire pour pouvoir être utilisé dans les templates.
+        In : self
+        Out : dictionnaire contenant des informations sur le film
+        """
         return {
             "id": self.id,
             "title": self.title,

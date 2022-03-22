@@ -4,6 +4,9 @@ from .config import API_KEY
 
 
 class Serie:
+    """
+    Passe les informations d'une série récupérées dans l'API TMDB sous forme de classe.
+    """
     def __init__(self, id):
         self._id = id
 
@@ -52,7 +55,11 @@ class Serie:
         return self._no_episodes
 
     
-    def context(self):
+    def context(self) -> dict :
+        """ Renvoie sous forme de dictionnaire pour pouvoir être utilisé dans les templates.
+        In : self
+        Out : dictionnaire contenant des informations sur la série
+        """
         return {
             "id": self.id,
             "name": self.name,
@@ -66,6 +73,9 @@ class Serie:
 
 
 class Season:
+    """
+    Passe les informations d'une saison récupérées dans l'API TMDB sous forme de classe.
+    """
     def __init__(self, serie_id, num):
         self._serie = Serie(serie_id)
         self._serie_id = self.serie.id
@@ -119,7 +129,11 @@ class Season:
         return self._episodes
 
     
-    def context(self):
+    def context(self) -> dict :
+        """ Renvoie sous forme de dictionnaire pour pouvoir être utilisé dans les templates.
+        In : self
+        Out : dictionnaire contenant des informations sur la saison
+        """
         return {
             "serie": self.serie,
             "serie_id": self.serie_id,
@@ -134,6 +148,9 @@ class Season:
 
 
 class Episode:
+    """
+    Passe les informations d'un épisode récupérées dans l'API TMDB sous forme de classe.
+    """
     def __init__(self, serie_id, season_num, episode_num):
         self._serie_id = serie_id
         self._season_num = season_num
@@ -180,7 +197,11 @@ class Episode:
         return self._date
 
     
-    def context(self):
+    def context(self) -> dict :
+        """ Renvoie sous forme de dictionnaire pour pouvoir être utilisé dans les templates.
+        In : self
+        Out : dictionnaire contenant des informations sur l'épisode
+        """
         return {
             "serie_id": self.serie_id,
             "season_num": self.season_num,

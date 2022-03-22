@@ -1,7 +1,27 @@
 from django.db import models
 
 
+"""
+AutoField = INT avec AutoIncrement
+IntegerField = INT
+CharField = VARCHAR
+TextField = TEXT
+DateFild = DATE
+
+ForeignKey = Clé étrangère
+
+primary_key=True : clé primaire
+blank=True : peut être vide
+null=True : si vide alors NULL est assigné
+max_length=n : définit la taille max d'un VARCHAR
+"""
+
+
 class Movie(models.Model):
+    """
+    Crée une table 'Movie' dans la base de données
+    """
+    # Création de chaque colonne de la table
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
@@ -14,6 +34,10 @@ class Movie(models.Model):
 
 
 class Serie(models.Model):
+    """
+    Crée une table 'Serie' dans la base de données
+    """
+    # Création de chaque colonne de la table
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
@@ -28,8 +52,14 @@ class Serie(models.Model):
 
 
 class Watchlist(models.Model):
-    movie_id = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE)
-    serie_id = models.ForeignKey(Serie, null=True, on_delete=models.CASCADE)
+    """
+    Crée une table 'WatchList' dans la base de données
+
+    Paire (id, null) ou (null, id) pour savoir si l'id est celui d'un film ou d'une série
+    """
+    # Création de chaque colonne de la table
+    movie_id = models.ForeignKey(Movie, null=True, on_delete=models.CASCADE) # clé étrangère : Movie.id
+    serie_id = models.ForeignKey(Serie, null=True, on_delete=models.CASCADE) # clé étrangère : Serie.id
 
     class Meta:
         managed = False
