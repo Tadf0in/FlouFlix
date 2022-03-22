@@ -1,6 +1,7 @@
 import requests as r
 import json
 from .config import API_KEY
+from browse.models import Serie as DB_Serie
 
 
 class Serie:
@@ -60,6 +61,10 @@ class Serie:
         In : self
         Out : dictionnaire contenant des informations sur la série
         """
+
+        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date)
+        new_serie.save()
+
         return {
             "id": self.id,
             "name": self.name,

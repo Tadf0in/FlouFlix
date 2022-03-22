@@ -1,5 +1,6 @@
 import requests as r
 from .config import API_KEY
+from browse.models import Movie as DB_Movie
 
 
 class Movie:
@@ -49,6 +50,10 @@ class Movie:
         In : self
         Out : dictionnaire contenant des informations sur le film
         """
+
+        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date)
+        new_movie.save()
+
         return {
             "id": self.id,
             "title": self.title,
