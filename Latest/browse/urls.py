@@ -17,5 +17,7 @@ urlpatterns = [
     # path('serie/<int:serie_id>/season/<int:season_num>/episode/<int:episode_num>', views.episode, name='browse-episode'),
 
     path('watchlist/', views.watchlist, name="watchlist"),
+
+    path('search/', views.search, name="search"),
     
 ]

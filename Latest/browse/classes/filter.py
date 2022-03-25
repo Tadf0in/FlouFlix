@@ -133,10 +133,44 @@ def total_in_db() -> dict :
     }
 
 
-def search_query(query):
-    """
+
+def search_movie(query):
+    """ Va chercher dans l'API TMDB tous les films correspondants à la recherche.
+    In : query (str) : recherche
+    Out : movies : liste d'instances de la classe Movie
     """
     api_url = f"http://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=fr&query={query}"
-    response = r.get(api_url).json()
+    api_response = r.get(api_url).json()
 
-    
+    movies = []
+    for result in api_response['results']:
+        movies.append(Movie(result['id']))
+
+    return movies
+
+
+def search_serie(query):
+    """ Va chercher dans l'API TMDB toutes les séries correspondantes à la recherche.
+    In : query (str) : recherche
+    Out : series : liste d'instances de la classe Serie
+    """
+    api_url = f"http://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=fr&query={query}"
+    api_response = r.get(api_url).json()
+
+    series = []
+    for result in api_response['results']:
+        series.append(Serie(result['id']))
+
+    return series
+
+
+def search_query(query):
+    """ Retourne les films et les séries correspondants à la recherche.
+    In : query (str) : recherche
+    Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie
+    """
+    if query != None:
+        return {
+            'movies': search_movie(query),
+            'series': search_serie(query),
+        }

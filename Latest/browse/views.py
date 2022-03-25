@@ -33,5 +33,5 @@ def season(request, serie_id, season_num):
     return render(request, "season.html", context=Season(serie_id, season_num).context())
     
 
-def search(request, query):
+def search(request, query=None):
     return render(request, "search.html", context=search_query(query))
