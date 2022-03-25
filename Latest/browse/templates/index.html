@@ -13,5 +13,46 @@
 <body>
     {% include 'header.html' %}
     
+    <div class="content index">
+
+        <h1>Films</h1>
+        <div class="movies">
+        {% for movie in movies %}
+            <a href="/browse/movie/{{ movie.id }}/" class="movie">
+                <img src={{ movie.img }}>
+                <span class="movie-title">{{ movie.title }}</span>
+            </a>
+        {% endfor %}
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h1>Séries</h1>
+        <div class="series">
+            {% for serie in series %}
+                <a href="/browse/serie/{{ serie.id }}/" class="serie">
+                    <img src={{ serie.img }}>
+                    <span class="serie-title">{{ serie.name }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Scroll horizontal -->
+    <script> 
+        const scrollMovie = document.querySelector(".movies");
+        const scrollSerie = document.querySelector(".series");
+
+        scrollMovie.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollMovie.scrollLeft += evt.deltaY;
+        });
+        scrollSerie.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollSerie.scrollLeft += evt.deltaY;
+        });
+    </script>
 </body>
 </html>

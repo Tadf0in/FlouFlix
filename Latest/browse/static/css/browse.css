@@ -58,14 +58,13 @@ header .header-right li a {
 }
 
 
-
-.popular-movies, .popular-series, .upcoming {
+.movies, .series, .upcoming {
     height: 550px;
     display: flex;
     align-items: center;
     overflow: hidden;
 }
-.popular-movie, .popular-serie, .upcoming-movie {
+.movie, .serie, .upcoming-movie {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,16 +73,16 @@ header .header-right li a {
     color: #eee;
     text-decoration: none;
 }
-.popular-movie-title, .popular-serie-title, .upcoming-movie-title {
+.movie-title, .serie-title, .upcoming-movie-title {
     padding-top: 10px;
     font-weight: 700;
 }
-.popular img, .upcoming img, .latest-movie img, .latest-serie img {
+.index img, .upcoming img, .latest-movie img, .latest-serie img {
     height: 350px;
     width: 250px;
     transition: 0.2s ease-out;
 }
-.popular img:hover, .upcoming img:hover {
+.index img:hover, .upcoming img:hover {
     height: 560px;
     width: 400px;
 }

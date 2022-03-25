@@ -2,15 +2,19 @@ from django.shortcuts import render
 from markupsafe import re
 from .classes.movies import Movie
 from .classes.series import Serie, Season, Episode
-from .classes.filter import total_popular, upcoming, search_query
+from .classes.filter import total_popular, upcoming, search_query, total_in_db
 
 
 def index(request):
-    return render(request, "index.html", context={'filter': None})
+    return render(request, "index.html", context=total_in_db())
+
+
+def watchlist(request):
+    return render(request, "watchlist.html", context=None)
 
 
 def popular(request):
-    return render(request, "popular.html", context=total_popular())
+    return render(request, "index.html", context=total_popular())
 
 
 def latest(request):

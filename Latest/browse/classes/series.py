@@ -11,6 +11,20 @@ class Serie:
     def __init__(self, id):
         self._id = id
 
+        try:
+            db = DB_Serie.objects.get(id=id)
+            self._name = db.name
+            self._description = db.description
+            self._img = db.img
+            self._date = db.date
+            self._no_seasons = db.no_seasons
+            self._no_episodes = db.no_episodes
+            
+        except DB_Serie.DoesNotExist:
+            self.api()
+
+
+    def api(self):
         api_url = f"http://api.themoviedb.org/3/tv/{self.id}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
@@ -61,9 +75,7 @@ class Serie:
         In : self
         Out : dictionnaire contenant des informations sur la série
         """
-
-        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date)
-        new_serie.save()
+        self.to_db()
 
         return {
             "id": self.id,
@@ -74,6 +86,11 @@ class Serie:
             "no_seasons": self.no_seasons,
             "no_episodes": self.no_episodes,
         }
+
+    
+    def to_db(self):
+        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date, self.no_seasons, self.no_episodes)
+        new_serie.save()
 
 
 

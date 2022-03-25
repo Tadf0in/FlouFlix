@@ -2,6 +2,9 @@ import requests as r
 from .config import API_KEY
 from .movies import Movie
 from .series import Serie
+from browse.models import Movie as Movie_DB
+from browse.models import Serie as Serie_DB
+
 
 
 def movie_popular() -> list :
@@ -42,11 +45,11 @@ def serie_popular() -> list :
     api_url = f"http://api.themoviedb.org/3/tv/popular?api_key={API_KEY}&language=fr"
     response = r.get(api_url).json()
 
-    movies = []
+    series = []
     for result in response['results']:
-        movies.append(Serie(result['id']))
+        series.append(Serie(result['id']))
 
-    return movies
+    return series
 
 
 def latest_movie() -> object :
@@ -91,6 +94,42 @@ def upcoming():
         'upcoming_movies': movie_upcoming(),
         'latest_movie': latest_movie(),
         'latest_serie': latest_serie(),
+    }
+
+
+def movie_in_db() -> object :
+    """ Va chercher les films présents dans la base de données.
+    In : rien
+    Out : movies : liste d'instances de la classe Movie
+    """
+    movies = []
+    for movie in Movie_DB.objects.all():
+        movies.append(Movie(movie.id))
+
+    return movies
+
+
+def serie_in_db() -> object :
+    """ Va chercher les séries présentes dans la base de données.
+    In : rien
+    Out :  series : liste d'instances de la classe Serie
+    """
+    series = []
+    for serie in Serie_DB.objects.all():
+        series.append(Serie(serie.id))
+
+    return series
+    
+
+
+def total_in_db() -> dict :
+    """ Retourne les films et les séries présents dans la base de données.
+    In : rien
+    Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie
+    """
+    return {
+        'movies': movie_in_db(),
+        'series': serie_in_db(),
     }
 
 

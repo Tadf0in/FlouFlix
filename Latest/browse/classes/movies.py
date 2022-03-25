@@ -10,6 +10,18 @@ class Movie:
     def __init__(self, id):
         self._id = id
 
+        try:
+            db = DB_Movie.objects.get(id=id)
+            self._title = db.title
+            self._description = db.description
+            self._img = db.img
+            self._date = db.date
+            
+        except DB_Movie.DoesNotExist:
+            self.api()
+
+    
+    def api(self):
         api_url = f"http://api.themoviedb.org/3/movie/{self.id}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
@@ -50,9 +62,7 @@ class Movie:
         In : self
         Out : dictionnaire contenant des informations sur le film
         """
-
-        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date)
-        new_movie.save()
+        self.to_db()
 
         return {
             "id": self.id,
@@ -61,3 +71,8 @@ class Movie:
             "img": self.img,
             "date": self.date,
         }
+
+
+    def to_db(self):
+        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date)
+        new_movie.save()
