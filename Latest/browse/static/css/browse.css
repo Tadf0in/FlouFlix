@@ -1,0 +1,96 @@
+body {
+    background-color: #111;
+    color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+
+    margin-bottom: 20vh;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header a {
+    text-decoration: none;
+}
+header h1 {
+    color: red;
+    padding-left: 50px;
+}
+header ul {
+    list-style: none;
+    display: flex;
+}
+header .header-left {
+    display: flex;
+    align-items: center;
+}
+header .header-left li a {
+    color: #eee;
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 30px;
+    transition: 0.5s;
+}
+header .header-left li a:hover, header .header-right li a:hover {
+    color: #bbb;
+}
+header .header-right {
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+}
+header .header-right li a {
+    color: #eee;
+    font-size: 15px;
+    font-weight: 600;
+    padding-right: 30px;
+    transition: 0.3s;
+}
+
+
+.content {
+    padding: 20px;
+}
+
+
+.movies, .series, .upcoming {
+    height: 550px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.movie, .serie, .upcoming-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 15px;
+    color: #eee;
+    text-decoration: none;
+}
+.movie-title, .serie-title, .upcoming-movie-title {
+    padding-top: 10px;
+    font-weight: 700;
+}
+.index img, .upcoming img, .latest-movie img, .latest-serie img {
+    height: 350px;
+    width: 250px;
+    transition: 0.2s ease-out;
+}
+.index img:hover, .upcoming img:hover {
+    height: 560px;
+    width: 400px;
+}
+
+
+.latest-div {
+    display: flex;
+}
+.latest-movie, .latest-serie {
+    width: 49%;
+}
