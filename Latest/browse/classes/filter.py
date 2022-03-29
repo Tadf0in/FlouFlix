@@ -171,6 +171,7 @@ def search_query(query):
     """
     if query != None:
         return {
+            'query': query,
             'movies': search_movie(query),
             'series': search_serie(query),
         }
