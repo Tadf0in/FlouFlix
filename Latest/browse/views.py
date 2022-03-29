@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from markupsafe import re
 from .classes.movies import Movie
 from .classes.series import Serie, Season, Episode
 from .classes.filter import total_popular, upcoming, search_query, total_in_db
