@@ -10,7 +10,15 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 ## Changelog
 
-- **V2** &nbsp;&nbsp;
+- **V3** &nbsp;&nbsp; *Intégration dans la BDD*
+
+  * Ajout de 3 models (= Relation de BDD) : Movie, Serie, WatchList
+  * Modification des classes Movie et Serie qui gèrent différemment si présent dans la BDD ou non
+  * Page d'accueil affiche tous les films et séries déjà consultés
+
+<br>
+
+- **V2** &nbsp;&nbsp; *Ajout des pages principales*
 
   * Page de présentation de la technologie utilisée (/presentation/)
   * Pages browse/  ,   browse/popular/  et  browse/latest/
