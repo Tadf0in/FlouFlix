@@ -12,27 +12,26 @@
 </head>
 <body>
     {% include 'header.html' %}
-    <form method="get">
-        <input type="search" name="q" id="search-bar">
-    </form>
+    
+    <div class="content search">   
 
-    {% if query != None %}
-        <div class="results">
-            {% for movie in movies %}
-            <a href="/browse/movie/{{ movie.id }}/" class="result-movie">
-                <img src={{ movie.img }}>
-            </a>
-            {% endfor %}
-            
-            {% for serie in series %}
-            <a href="/browse/serie/{{ serie.id }}/" class="result-serie">
-                <img src={{ serie.img }}>
-            </a>
-            {% endfor %}
-        </div>
-    {% else %}
-        <span class="noresult">Aucun résultat</span> 
-    {% endif %}
-
+        {% if query != '' %}
+            <div class="results">
+                {% for movie in movies %}
+                <a href="/browse/movie/{{ movie.id }}/" class="result-movie">
+                    <img src={{ movie.img }}>
+                </a>
+                {% endfor %}
+                
+                {% for serie in series %}
+                <a href="/browse/serie/{{ serie.id }}/" class="result-serie">
+                    <img src={{ serie.img }}>
+                </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <span class="noresult">Aucun résultat</span> 
+        {% endif %}
+    </div>
 </body>
 </html>

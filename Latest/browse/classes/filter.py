@@ -134,7 +134,7 @@ def total_in_db() -> dict :
 
 
 
-def search_movie(query):
+def search_movie(query:str) -> list :
     """ Va chercher dans l'API TMDB tous les films correspondants à la recherche.
     In : query (str) : recherche
     Out : movies : liste d'instances de la classe Movie
@@ -149,7 +149,7 @@ def search_movie(query):
     return movies
 
 
-def search_serie(query):
+def search_serie(query:str) -> list :
     """ Va chercher dans l'API TMDB toutes les séries correspondantes à la recherche.
     In : query (str) : recherche
     Out : series : liste d'instances de la classe Serie
@@ -164,7 +164,7 @@ def search_serie(query):
     return series
 
 
-def search_query(query):
+def search_query(query:str) -> dict :
     """ Retourne les films et les séries correspondants à la recherche.
     In : query (str) : recherche
     Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie

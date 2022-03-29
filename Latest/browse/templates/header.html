@@ -10,7 +10,12 @@
     </div>
     <div class="header-right">
         <ul>
-            <li><a href="/search/"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            <li class="header-search">
+                <form method="get" action="/search/">
+                    <input type="search" name="q" class="search-bar" placeholder="Recherche...">
+                    <a href="/search/"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </form>
+            </li>    
             <li><a href="/profile/"><i class="fa-solid fa-circle-user"></i></a></li>
         </ul>
     </div>
