@@ -1,6 +1,4 @@
-from curses.ascii import HT
 from django.shortcuts import render
-from django.utils.datastructures import MultiValueDictKeyError
 from .classes.movies import Movie
 from .classes.series import Serie, Season, Episode
 from .classes.filter import total_popular, upcoming, search_query, total_in_db
@@ -34,10 +32,5 @@ def season(request, serie_id, season_num):
     return render(request, "season.html", context=Season(serie_id, season_num).context())
     
 
-def search(request):
-    try:
-        query = request.GET['q'] 
-    except MultiValueDictKeyError:
-        query = None
-
+def search(request, query=None):
     return render(request, "search.html", context=search_query(query))
