@@ -126,14 +126,15 @@ header .header-right li a {
     width: 100%;
 }
 .results {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
 }
 .results img {
     height: 350px;
     width: 250px;
-    transition: 0.2s ease-out;
 }
 .results img:hover {
-    height: 560px;
-    width: 400px;
+    height: 346px;
+    width: 246px;
 }
