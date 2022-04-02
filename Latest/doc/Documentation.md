@@ -18,7 +18,9 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 - **V4** &nbsp;&nbsp; *...*
 
   * Ajout d'un barre de recherche
-  * Ajout d'un champ status dans la BDD (voir [Conception](#conception)</a>)
+  * Ajout d'un champ status dans la BDD pour accélérer le site (voir [Conception](#conception)</a>) 
+  * Bouton 'Lecture' fonctionnel sur les films et les épisodes (lit la 1ere vidéo youtube trouvée)
+  * Page saison/ : Menu déroulant pour choisir la saison et ses épisodes
 
 <br>
 
@@ -69,9 +71,9 @@ Les informations sur un film sont récupérées dans l'API TMDB.
 
 Gestion de la BDD : 
 
-A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans la BDD avec un statut temporaire ('temp').
+A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans la BDD avec un statut temporaire ('temp') pour qu'il soit chargé plus rapidement la prochaine fois en évitant d'envoyer une nouvelle requête inutile à l'API.
 Si on clique sur un film/série, ce dernier passe au statut consulté ('clicked') dans la BDD.
-La page d'accueil du site affiche seulement les films/série consultés donc un nettoyage de tous les films/série temporaires est effectué lorqu'on se rend sur la page d'accueil.
+La page d'accueil du site affiche seulement les films/série consultés.
 
 Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  : 
 ![](img/search.png)

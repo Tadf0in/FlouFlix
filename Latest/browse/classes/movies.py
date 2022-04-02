@@ -19,6 +19,7 @@ class Movie:
             
         except DB_Movie.DoesNotExist:
             self.api()
+            self.to_db('temp')
 
     
     def api(self):
@@ -33,7 +34,10 @@ class Movie:
             self._img = 'https://image.tmdb.org/t/p/w500' + response['poster_path']
         else: 
             self._img = 'https://i.pinimg.com/originals/72/24/f6/7224f6d53614cedbf8cef516b705a555.jpg'
-        self._date = response['release_date']
+        if response['release_date'] != "":
+            self._date = response['release_date']
+        else:
+            self._date = "1234-12-12"
 
 # Getters
     @property
@@ -62,7 +66,7 @@ class Movie:
         In : self
         Out : dictionnaire contenant des informations sur le film
         """
-        self.to_db()
+        self.to_db('clicked')
 
         return {
             "id": self.id,
@@ -73,6 +77,6 @@ class Movie:
         }
 
 
-    def to_db(self):
-        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date, 'clicked')
+    def to_db(self, status):
+        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date, status)
         new_movie.save()

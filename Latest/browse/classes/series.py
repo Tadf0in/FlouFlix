@@ -22,6 +22,7 @@ class Serie:
             
         except DB_Serie.DoesNotExist:
             self.api()
+            self.to_db('temp')
 
 
     def api(self):
@@ -75,7 +76,7 @@ class Serie:
         In : self
         Out : dictionnaire contenant des informations sur la série
         """
-        self.to_db()
+        self.to_db('clicked')
 
         return {
             "id": self.id,
@@ -88,8 +89,8 @@ class Serie:
         }
 
     
-    def to_db(self):
-        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date, self.no_seasons, self.no_episodes, 'clicked')
+    def to_db(self, status):
+        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date, self.no_seasons, self.no_episodes, status)
         new_serie.save()
 
 

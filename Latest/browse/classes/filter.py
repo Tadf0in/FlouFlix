@@ -103,7 +103,7 @@ def movie_in_db() -> object :
     Out : movies : liste d'instances de la classe Movie
     """
     movies = []
-    for movie in Movie_DB.objects.all():
+    for movie in Movie_DB.objects.filter(status='clicked'):
         movies.append(Movie(movie.id))
 
     return movies
@@ -115,7 +115,7 @@ def serie_in_db() -> object :
     Out :  series : liste d'instances de la classe Serie
     """
     series = []
-    for serie in Serie_DB.objects.all():
+    for serie in Serie_DB.objects.filter(status='clicked'):
         series.append(Serie(serie.id))
 
     return series
@@ -127,10 +127,6 @@ def total_in_db() -> dict :
     In : rien
     Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie
     """
-    # Nettoyage de la BDD
-    Movie_DB.objects.filter(status='temp').delete()
-    Serie_DB.objects.filter(status='temp').delete() 
-
     return {
         'movies': movie_in_db(),
         'series': serie_in_db(),
@@ -196,6 +192,14 @@ def get_movie_video(id):
 def get_episode_video(id, season_num, episode_num):
     api_url = f"http://api.themoviedb.org/3/tv/{id}/season/{season_num}/episode/{episode_num}/videos?api_key={API_KEY}&language=fr"
     api_response = r.get(api_url).json()
+
+    if api_response['results'] == []:
+        api_url = f"http://api.themoviedb.org/3/tv/{id}/season/{season_num}/videos?api_key={API_KEY}&language=fr"
+        api_response = r.get(api_url).json()
+
+    if api_response['results'] == []:
+        api_url = f"http://api.themoviedb.org/3/tv/{id}/videos?api_key={API_KEY}&language=fr"
+        api_response = r.get(api_url).json()
 
     key = ''
     for result in api_response['results']:
