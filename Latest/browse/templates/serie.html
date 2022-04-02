@@ -13,20 +13,21 @@
 <body>
     {% include 'header.html' %}
 
-    <div class="content serie">
-        ID de la série : {{ id }}
-        <br>
-        Nom de la série: {{ name }}
-        <br>
-        <img src={{ img }}>
-        <br>
-        Description : {{ description }}
-        <br>
-        Date : {{ date }}
-        <br>
-        Saisons : {{ no_seasons }}
-        <br>
-        Episodes : {{ no_episodes }}
+    <div class="content presentation pr-serie">
+        <div class="presentation-left">
+            <h2>{{ name }}</h2>
+            <img src={{ img }}>      
+        </div>
+        <div class="presentation-right">
+            <p>{{ description }}</p>
+            <span class="date">{{ date }}</span>
+            <span class="no">{{ no_seasons }} saisons / {{ no_episodes }} episodes</span>
+            <span class="buttons">
+                <a href="/browse/serie/{{ id }}/S1" class="play">Voir les épisodes</a>
+                <button class="add"><i class="fa-solid fa-plus"></i></button>
+            </span>
+        </div>
+        
     </div>
 </body>
 </html>

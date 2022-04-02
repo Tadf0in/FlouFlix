@@ -13,16 +13,19 @@
 <body>
     {% include 'header.html' %}
 
-    <div class="content movie">
-        ID du film : {{ id }}
-        <br>
-        Titre du film : {{ title }}
-        <br>
-        <img src={{ img }}>
-        <br>
-        Description : {{ description }}
-        <br>
-        Date : {{ date }}
+    <div class="content presentation pr-movie">
+        <div class="presentation-left">
+            <h2>{{ title }}</h2>
+            <img src={{ img }}>      
+        </div>
+        <div class="presentation-right">
+            <p>{{ description }}</p>
+            <span class="date">{{ date }}</span>
+            <span class="buttons">
+                <button class="play"><i class="fa-solid fa-play"></i> &nbsp;Lecture</button>
+                <button class="add"><i class="fa-solid fa-plus"></i></button>
+            </span>
+        </div>
     </div>
 </body>
 </html>

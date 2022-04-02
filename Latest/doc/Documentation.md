@@ -2,6 +2,10 @@
 
 <br>
 
+<div align="center"><img src="img/flouflix.png"></img></div>
+
+<br>
+
 ## Présentation
 
 FlouFlix est un site internet présentant un catalogue complet de Film et séries où l'on peut avoir une seule WatchList regroupant toutes les plateformes VOD.

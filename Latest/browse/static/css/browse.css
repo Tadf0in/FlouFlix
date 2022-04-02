@@ -138,3 +138,63 @@ header .header-right li a {
     height: 346px;
     width: 246px;
 }
+
+
+.presentation {
+    display: flex;
+    justify-content: center;
+}
+.presentation-left, .presentation-right {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 10px;
+}
+.presentation-left {
+    justify-content: center;
+    align-items: center;
+}
+.presentation img {
+    width: 400px;
+    height: 560px;
+}
+.presentation p {
+    margin-top: 65px;
+    text-align: justify;
+}
+.presentation .date {
+    margin-top: 20px;
+}
+.presentation .no {
+    margin-top: 10px;
+}
+.presentation .buttons {
+    margin-top: 40px;
+}
+.presentation .play {
+    text-decoration: none;
+    color: #111;
+    padding: 10px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    font-weight: bold;
+}
+.presentation .play:hover {
+    background-color: #bbb;
+}
+.presentation .add {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #eee;
+    border: solid 2px #eee;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.presentation .add:hover {
+    border: solid 1px #eee;
+}
