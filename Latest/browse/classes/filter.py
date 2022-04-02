@@ -127,6 +127,10 @@ def total_in_db() -> dict :
     In : rien
     Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie
     """
+    # Nettoyage de la BDD
+    # Movie_DB.objects.filter(status='temp').delete()
+    # Serie_DB.objects.filter(status='temp').delete() 
+
     return {
         'movies': movie_in_db(),
         'series': serie_in_db(),

@@ -89,7 +89,7 @@ class Serie:
 
     
     def to_db(self):
-        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date, self.no_seasons, self.no_episodes)
+        new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date, self.no_seasons, self.no_episodes, 'clicked')
         new_serie.save()
 
 

@@ -74,5 +74,5 @@ class Movie:
 
 
     def to_db(self):
-        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date)
+        new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date, 'clicked')
         new_movie.save()

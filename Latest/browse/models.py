@@ -27,6 +27,7 @@ class Movie(models.Model):
     description = models.TextField(blank=True, null=True)
     img = models.CharField(blank=True, null=True, max_length=100)
     date = models.DateField(blank=True, null=True)
+    status = models.CharField(max_length=10, default='temp')
 
     class Meta:
         managed = False
@@ -45,6 +46,7 @@ class Serie(models.Model):
     date = models.DateField(blank=True, null=True)
     no_seasons = models.IntegerField(blank=True, null=True)
     no_episodes = models.IntegerField(blank=True, null=True)
+    status = models.CharField(max_length=10, default='temp')
 
     class Meta:
         managed = False
