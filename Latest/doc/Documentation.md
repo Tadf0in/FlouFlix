@@ -58,9 +58,19 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 Le site est géré avec Django.
 <br>
+
 Les informations sur un film sont récupérées dans l'API TMDB.
 
-Gestion de la BDD :
-A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans la BDD avec un statut temporaire ('temp') pour être plus rapide à afficher la fois d'après.
+<br>
+
+Gestion de la BDD : 
+
+A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans la BDD avec un statut temporaire ('temp').
 Si on clique sur un film/série, ce dernier passe au statut consulté ('clicked') dans la BDD.
 La page d'accueil du site affiche seulement les films/série consultés donc un nettoyage de tous les films/série temporaires est effectué lorqu'on se rend sur la page d'accueil.
+
+Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  : 
+![](img/search.png)
+
+Fonctionnement de la page d'un film :
+![](img/affiche.png)
