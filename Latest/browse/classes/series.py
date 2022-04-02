@@ -166,6 +166,7 @@ class Season:
             "img": self.img,
             "date": self.date,
             "episodes": self.episodes,
+            "range_no_seasons": range(1, self.serie.no_seasons+1),
         }
 
 

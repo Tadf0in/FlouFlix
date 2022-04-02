@@ -13,30 +13,44 @@
 <body>
     {% include 'header.html' %}
 
-    <div class="content saison">
-        Nom de la série: {{ serie.name }}
-        <br>
-        Nom de la saison: {{ name }}
-        <br>
-        <img src={{ img }}>
-        <br>
-        Description : {{ description }}
-        <br>
-        Date : {{ date }}
-        <br>
-        Episodes : {{ no_episodes }}
-        <ul>
+    <div class="content pr-saison-episodes">
+        <div class="presentation pr-saison">
+            <div class="presentation-left">
+                <h2>{{ serie.name }}</h2>
+                <img src={{ img }}>
+            </div>
+            <div class="presentation-right">
+                <select name="season_select" onchange="location = this.value;">
+                    {% for i in range_no_seasons %}
+                        {% if i == num %}
+                            <option value="/browse/serie/{{ serie_id }}/S{{ i }}" selected>Saison {{ i }}</option>
+                        {% else %}
+                            <option value="/browse/serie/{{ serie_id }}/S{{ i }}">Saison {{ i }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <p>{{ description }}</p>
+                <span class="date">{{ date }}</span>
+                <span class="no">{{ no_episodes }}</span>
+                <span class="buttons">
+                    <a href="#episodes" class="play">Voir les épisodes</a>
+                </span>
+            </div>          
+        </div>
+        <ul id="episodes" class="pr-episodes">
             {% for episode in episodes %}
-            <li>
-                {{ episode.name }}
-                <br>
-                <img src={{ episode.img }}>
-                <br>
-                {{ episode.description }}
+            <li class="pr-episode">
+                <div class="pr-episode-left">
+                    <h3>{{ episode.name }}</h3>
+                    <img src={{ episode.img }}>
+                </div>
+                <div class="pr-episode-right">
+                    <p>{{ episode.description }}</p>
+                    <a href="/watch/serie/{{ serie_id }}/S{{ num }}E{{ episode.episode_num }}" class="play"><i class="fa-solid fa-play"></i> &nbsp;Lecture</a>
+                </div>
             </li>
             {% endfor %}
         </ul>
-        
     </div>
 </body>
 </html>
