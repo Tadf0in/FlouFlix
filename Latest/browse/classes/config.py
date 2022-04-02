@@ -1,0 +1,1 @@
+API_KEY = "" # Entrer la clé d'api TMDB ici
