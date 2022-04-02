@@ -179,3 +179,28 @@ def search_query(query:str) -> dict :
             'movies': search_movie(query),
             'series': search_serie(query),
         }
+
+
+def get_movie_video(id):
+    api_url = f"http://api.themoviedb.org/3/movie/{id}/videos?api_key={API_KEY}&language=fr"
+    api_response = r.get(api_url).json()
+
+    key = ''
+    for result in api_response['results']:
+        if result['site'] == 'YouTube':
+            key = result['key']
+
+    return key
+
+
+def get_episode_video(id, season_num, episode_num):
+    api_url = f"http://api.themoviedb.org/3/tv/{id}/season/{season_num}/episode/{episode_num}/videos?api_key={API_KEY}&language=fr"
+    api_response = r.get(api_url).json()
+
+    key = ''
+    for result in api_response['results']:
+        if result['site'] == 'YouTube':
+            key = result['key']
+            break
+
+    return key

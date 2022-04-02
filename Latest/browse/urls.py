@@ -19,5 +19,7 @@ urlpatterns = [
     path('watchlist/', views.watchlist, name="watchlist"),
 
     path('search/', views.search, name="search"),
-    
+
+    path('watch/movie/<int:id>/', views.watch_movie, name="watch"), 
+    path('watch/serie/<int:id>/S<int:season_num>E<int:episode_num>/', views.watch_serie, name="watch"),   
 ]

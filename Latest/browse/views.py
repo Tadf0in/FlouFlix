@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
 from .classes.movies import Movie
 from .classes.series import Serie, Season, Episode
-from .classes.filter import total_popular, upcoming, search_query, total_in_db
+from .classes.filter import total_popular, upcoming, search_query, total_in_db, get_movie_video, get_episode_video
 
 
 def index(request):
@@ -41,3 +41,11 @@ def search(request):
         query = None
 
     return render(request, "search.html", context=search_query(query))
+
+
+def watch_movie(request, id):
+    return render(request, "watch.html", context={ 'key': get_movie_video(id) })
+
+
+def watch_serie(request, id, season_num, episode_num):
+    return render(request, "watch.html", context={ 'key': get_episode_video(id, season_num, episode_num) })
