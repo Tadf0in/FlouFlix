@@ -19,7 +19,7 @@ class Movie:
             self._date = db.date
 
             try:
-                wl = DB_Watchlist.objects.get(id=id)
+                wl = DB_Watchlist.objects.get(movie=id)
                 self.is_in_watchlist = True
             except DB_Watchlist.DoesNotExist:
                 self.is_in_watchlist = False

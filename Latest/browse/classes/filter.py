@@ -242,7 +242,7 @@ def get_watch_list():
         if id.movie != None:
             movies.append(id.movie)
         elif id.serie != None:
-            series.append[id.serie]
+            series.append(id.serie)
     return {
         'movies': movies,
         'series': series,
@@ -257,13 +257,14 @@ def add_to_list(genre, id):
     else:
         new = Watchlist_DB(id, None, id)
         new.save()
-    
+        return Serie(id).context()
+
 
 def remove_from_list(genre, id):
     if genre == 'movie':
         Watchlist_DB.objects.get(movie=id).delete()
         return Movie(id).context()
     else:
-        new = Watchlist_DB(id, None, id)
-        new.save()
+        Watchlist_DB.objects.get(serie=id).delete()
+        return Serie(id).context()
     

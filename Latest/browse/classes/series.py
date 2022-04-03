@@ -2,6 +2,7 @@ import requests as r
 import json
 from .config import API_KEY
 from browse.models import Serie as DB_Serie
+from browse.models import Watchlist as DB_Watchlist
 
 
 class Serie:
@@ -19,8 +20,15 @@ class Serie:
             self._date = db.date
             self._no_seasons = db.no_seasons
             self._no_episodes = db.no_episodes
+
+            try:
+                wl = DB_Watchlist.objects.get(serie=id)
+                self.is_in_watchlist = True
+            except DB_Watchlist.DoesNotExist:
+                self.is_in_watchlist = False
             
         except DB_Serie.DoesNotExist:
+            self.is_in_watchlist = False
             self.api()
             self.to_db('temp')
 
@@ -79,6 +87,7 @@ class Serie:
         self.to_db('clicked')
 
         return {
+            "is_in_watchlist": self.is_in_watchlist,
             "id": self.id,
             "name": self.name,
             "description": self.description,
