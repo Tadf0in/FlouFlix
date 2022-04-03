@@ -4,6 +4,7 @@ from .movies import Movie
 from .series import Serie
 from browse.models import Movie as Movie_DB
 from browse.models import Serie as Serie_DB
+from browse.models import Watchlist as Watchlist_DB
 
 
 
@@ -160,7 +161,6 @@ def search_serie(query:str) -> (list, int) :
     """
     api_url = f"http://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=fr&query={query}"
     api_response = r.get(api_url).json()
-    print(api_response)
     max_popularity = api_response['results'][0]['popularity'] if api_response['results'] != [] else 0
 
     series = []
@@ -231,3 +231,39 @@ def get_episode_video(id:int, season_num:int, episode_num:int) -> str :
             break
 
     return key
+
+
+def get_watch_list():
+    ids = Watchlist_DB.objects.all()
+    movies = []
+    series = []
+    for id in ids:
+        if id.movie != None:
+            movies.append(id.movie)
+        elif id.serie != None:
+            series.append(id.serie)
+    return {
+        'movies': movies,
+        'series': series,
+    }
+
+
+def add_to_list(genre, id):
+    if genre == 'movie':
+        new = Watchlist_DB(id, id, None)
+        new.save()
+        return Movie(id).context()
+    else:
+        new = Watchlist_DB(id, None, id)
+        new.save()
+        return Serie(id).context()
+
+
+def remove_from_list(genre, id):
+    if genre == 'movie':
+        Watchlist_DB.objects.get(movie=id).delete()
+        return Movie(id).context()
+    else:
+        Watchlist_DB.objects.get(serie=id).delete()
+        return Serie(id).context()
+    

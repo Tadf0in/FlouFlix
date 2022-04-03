@@ -17,6 +17,8 @@ urlpatterns = [
     # path('serie/<int:serie_id>/season/<int:season_num>/episode/<int:episode_num>', views.episode, name='browse-episode'),
 
     path('watchlist/', views.watchlist, name="watchlist"),
+    path('add/<str:genre>/<int:id>', views.add_to_watchlist, name="add"),
+    path('remove/<str:genre>/<int:id>', views.remove_from_watchlist, name="remove"),
 
     path('search/', views.search, name="search"),
 

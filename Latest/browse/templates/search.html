@@ -14,7 +14,7 @@
     {% include 'header.html' %}
     
     <div class="content search">   
-
+        <h5>Résultats pour '{{ query }}'</h5>
         {% if query != '' %}
             <!-- Affiche les films avant les séries si les films sont plus populaires -->
             {% if most_popular == 'Films' %}
