@@ -134,34 +134,40 @@ def total_in_db() -> dict :
 
 
 
-def search_movie(query:str) -> list :
+def search_movie(query:str) -> (list, int) :
     """ Va chercher dans l'API TMDB tous les films correspondants à la recherche.
     In : query (str) : recherche
     Out : movies : liste d'instances de la classe Movie
+          max_popularity (int) : popularité du 1er résultat pour afficher le meilleur en 1er
     """
     api_url = f"http://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=fr&query={query}"
     api_response = r.get(api_url).json()
+
+    max_popularity = api_response['results'][0]['popularity']
 
     movies = []
     for result in api_response['results']:
         movies.append(Movie(result['id']))
 
-    return movies
+    return movies, max_popularity
 
 
-def search_serie(query:str) -> list :
+def search_serie(query:str) -> (list, int) :
     """ Va chercher dans l'API TMDB toutes les séries correspondantes à la recherche.
     In : query (str) : recherche
     Out : series : liste d'instances de la classe Serie
+          max_popularity (int) : popularité du 1er résultat pour afficher le meilleur en 1er
     """
     api_url = f"http://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=fr&query={query}"
     api_response = r.get(api_url).json()
+
+    max_popularity = api_response['results'][0]['popularity']
 
     series = []
     for result in api_response['results']:
         series.append(Serie(result['id']))
 
-    return series
+    return series, max_popularity
 
 
 def search_query(query:str) -> dict :
@@ -170,14 +176,22 @@ def search_query(query:str) -> dict :
     Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie
     """
     if query != None:
+        movies = search_movie(query)
+        series = search_serie(query)
+        most_popular = 'Films' if movies[1] >= series[1] else 'Séries' # Détermine le 1er résultat à afficher
         return {
-            'query': query,
-            'movies': search_movie(query),
-            'series': search_serie(query),
-        }
+                'query': query,
+                'most_popular': most_popular,
+                'movies': movies[0],
+                'series': series[0],
+            }
 
 
-def get_movie_video(id):
+def get_movie_video(id:int) -> str :
+    """ Retourne la clé YouTube de la prmière vidéo trouvée dans l'API
+    In : id (int) : id du film
+    Out : key (str) : clé YouTube
+    """
     api_url = f"http://api.themoviedb.org/3/movie/{id}/videos?api_key={API_KEY}&language=fr"
     api_response = r.get(api_url).json()
 
@@ -189,14 +203,23 @@ def get_movie_video(id):
     return key
 
 
-def get_episode_video(id, season_num, episode_num):
+def get_episode_video(id:int, season_num:int, episode_num:int) -> str :
+    """ Retourne la clé YouTube de la prmière vidéo trouvée dans l'API
+    In : id (int) : id du film
+         season_num (int) : numéro de la saison
+         episode_num (int) : numéro de l'épisode
+    Out : key (str) : clé YouTube
+    """
+    # Cherche une vidéo sur l'épisode
     api_url = f"http://api.themoviedb.org/3/tv/{id}/season/{season_num}/episode/{episode_num}/videos?api_key={API_KEY}&language=fr"
     api_response = r.get(api_url).json()
 
+    # Si aucune vidéo trouvée sur l'épisode alors cherche sur la saison entière
     if api_response['results'] == []:
         api_url = f"http://api.themoviedb.org/3/tv/{id}/season/{season_num}/videos?api_key={API_KEY}&language=fr"
         api_response = r.get(api_url).json()
 
+    # Si aucune vidéo trouvée sur la saison alors cherche sur la série entière
     if api_response['results'] == []:
         api_url = f"http://api.themoviedb.org/3/tv/{id}/videos?api_key={API_KEY}&language=fr"
         api_response = r.get(api_url).json()

@@ -14,6 +14,12 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 ## Changelog
 
+- **V5** &nbsp;&nbsp; *...*
+
+  * Algorithme de recherche amélioré : sort la catégorie la plus populaire en 1er
+  * ...
+
+<br>
 
 - **V4** &nbsp;&nbsp; *Pages et bouton 'Lecture' qui fonctionnent*
 

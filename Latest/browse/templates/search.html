@@ -16,19 +16,38 @@
     <div class="content search">   
 
         {% if query != '' %}
+            <!-- Affiche les films avant les séries si les films sont plus populaires -->
+            {% if most_popular == 'Films' %}
+                <h3>Films</h3>
+                <div class="results">
+                    {% for movie in movies %}
+                    <a href="/browse/movie/{{ movie.id }}/" class="result-movie">
+                        <img src={{ movie.img }}>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <h3>Séries</h3>
             <div class="results">
-                {% for movie in movies %}
-                <a href="/browse/movie/{{ movie.id }}/" class="result-movie">
-                    <img src={{ movie.img }}>
-                </a>
-                {% endfor %}
-                
                 {% for serie in series %}
                 <a href="/browse/serie/{{ serie.id }}/" class="result-serie">
                     <img src={{ serie.img }}>
                 </a>
                 {% endfor %}
             </div>
+
+            <!-- Affiche les films après avoir afficher les séries si les films sont moins populaires -->
+            {% if most_popular != 'Films' %}
+                <h3>Films</h3>
+                <div class="results">
+                    {% for movie in movies %}
+                    <a href="/browse/movie/{{ movie.id }}/" class="result-movie">
+                        <img src={{ movie.img }}>
+                    </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% else %}
             <span class="noresult">Aucun résultat</span> 
         {% endif %}
