@@ -14,10 +14,11 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 ## Changelog
 
-- **V5** &nbsp;&nbsp; *...*
+- **V5** &nbsp;&nbsp; *Mise en place de la WatchList*
 
   * Algorithme de recherche amélioré : sort la catégorie la plus populaire en 1er
-  * ...
+  * Bouton pour ajouter/supprimer dans la WatchList fonctionnel
+  * WatchList fonctionnelle
 
 <br>
 

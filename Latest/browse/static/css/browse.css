@@ -145,6 +145,7 @@ header .header-right li a {
 .presentation {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 .presentation-left, .presentation-right {
     display: flex;
