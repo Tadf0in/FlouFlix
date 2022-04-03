@@ -81,8 +81,10 @@ A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans 
 Si on clique sur un film/série, ce dernier passe au statut consulté ('clicked') dans la BDD.
 La page d'accueil du site affiche seulement les films/série consultés.
 
-Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  : 
+Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  :
+
 ![](img/search.png)
 
 Fonctionnement de la page d'un film :
+
 ![](img/affiche.png)
