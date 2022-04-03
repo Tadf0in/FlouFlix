@@ -78,13 +78,13 @@ Les informations sur un film sont récupérées dans l'API TMDB.
 Gestion de la BDD : 
 
 A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans la BDD avec un statut temporaire ('temp') pour qu'il soit chargé plus rapidement la prochaine fois en évitant d'envoyer une nouvelle requête inutile à l'API.
-Si on clique sur un film/série, ce dernier passe au statut consulté ('clicked') dans la BDD.
+Si on clique sur un film/série, ce dernier passe au statut consulté ('clicked') dans la BDD. <br>
 La page d'accueil du site affiche seulement les films/série consultés.
+
+Fonctionnement général :
+
+![](img/affiche.png)
 
 Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  :
 
 ![](img/search.png)
-
-Fonctionnement de la page d'un film :
-
-![](img/affiche.png)
