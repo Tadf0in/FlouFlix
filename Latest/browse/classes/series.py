@@ -13,6 +13,7 @@ class Serie:
         self._id = id
 
         try:
+            # Si dans la BDD
             db = DB_Serie.objects.get(id=id)
             self._name = db.name
             self._description = db.description
@@ -22,18 +23,25 @@ class Serie:
             self._no_episodes = db.no_episodes
 
             try:
+                # Si dans la WatchList
                 wl = DB_Watchlist.objects.get(serie=id)
                 self.is_in_watchlist = True
             except DB_Watchlist.DoesNotExist:
+                # Si pas dans la WatchList
                 self.is_in_watchlist = False
             
         except DB_Serie.DoesNotExist:
+            # Si pas dans la BDD
             self.is_in_watchlist = False
-            self.api()
-            self.to_db('temp')
+            self.api() # Récupère les infos dans l'api
+            self.to_db('temp') # AJoute dans la BDD
 
 
     def api(self):
+        """ Récupères les informations sur la série dans l'API TMDB
+        In : self
+        Out : rien
+        """
         api_url = f"http://api.themoviedb.org/3/tv/{self.id}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()

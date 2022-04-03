@@ -161,7 +161,6 @@ def search_serie(query:str) -> (list, int) :
     """
     api_url = f"http://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=fr&query={query}"
     api_response = r.get(api_url).json()
-    print(api_response)
     max_popularity = api_response['results'][0]['popularity'] if api_response['results'] != [] else 0
 
     series = []

@@ -9,9 +9,13 @@ class Movie:
     Passe les informations d'un film récupérées dans l'API TMDB sous forme de classe.
     """
     def __init__(self, id):
+        """
+        In : id (int) : ID du film dans la BDD (et dans l'API)
+        """
         self._id = id
 
         try:
+            # Si dans la BDD
             db = DB_Movie.objects.get(id=id)
             self._title = db.title
             self._description = db.description
@@ -19,18 +23,25 @@ class Movie:
             self._date = db.date
 
             try:
+                # Si dans la WatchList
                 wl = DB_Watchlist.objects.get(movie=id)
                 self.is_in_watchlist = True
             except DB_Watchlist.DoesNotExist:
+                # Si pas dans la WatchList
                 self.is_in_watchlist = False
             
         except DB_Movie.DoesNotExist:
+            # Si pas dans la BDD
             self.is_in_watchlist = False
-            self.api()
-            self.to_db('temp')
+            self.api() # Récupère les infos dans l'api
+            self.to_db('temp') # AJoute dans la BDD
 
     
     def api(self):
+        """ Récupères les informations sur le film dans l'API TMDB
+        In : self
+        Out : rien
+        """
         api_url = f"http://api.themoviedb.org/3/movie/{self.id}?api_key={API_KEY}&language=fr"
 
         response = r.get(api_url).json()
