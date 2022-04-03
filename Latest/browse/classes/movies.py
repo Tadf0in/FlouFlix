@@ -1,6 +1,7 @@
 import requests as r
 from .config import API_KEY
 from browse.models import Movie as DB_Movie
+from browse.models import Watchlist as DB_Watchlist
 
 
 class Movie:
@@ -16,8 +17,15 @@ class Movie:
             self._description = db.description
             self._img = db.img
             self._date = db.date
+
+            try:
+                wl = DB_Watchlist.objects.get(id=id)
+                self.is_in_watchlist = True
+            except DB_Watchlist.DoesNotExist:
+                self.is_in_watchlist = False
             
         except DB_Movie.DoesNotExist:
+            self.is_in_watchlist = False
             self.api()
             self.to_db('temp')
 
@@ -69,6 +77,7 @@ class Movie:
         self.to_db('clicked')
 
         return {
+            "is_in_watchlist": self.is_in_watchlist,
             "id": self.id,
             "title": self.title,
             "description": self.description,

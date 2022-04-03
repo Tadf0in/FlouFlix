@@ -4,6 +4,7 @@ from .movies import Movie
 from .series import Serie
 from browse.models import Movie as Movie_DB
 from browse.models import Serie as Serie_DB
+from browse.models import Watchlist as Watchlist_DB
 
 
 
@@ -231,3 +232,29 @@ def get_episode_video(id:int, season_num:int, episode_num:int) -> str :
             break
 
     return key
+
+
+def get_watch_list():
+    ids = Watchlist_DB.objects.all()
+    movies = []
+    series = []
+    for id in ids:
+        if id.movie != None:
+            movies.append(id.movie)
+        elif id.serie != None:
+            series.append[id.serie]
+    return {
+        'movies': movies,
+        'series': series,
+    }
+
+
+def add_to_list(genre, id):
+    if genre == 'movie':
+        new = Watchlist_DB(id, id, None)
+        new.save()
+    else:
+        new = Watchlist_DB(id, None, id)
+        new.save()
+    
+    return get_watch_list()

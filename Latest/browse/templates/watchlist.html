@@ -12,6 +12,10 @@
 </head>
 <body>
     {% include 'header.html' %}
-    
+    <div class="content watchlist">
+        {% for movie in movies %}
+            <img src="{{ movie.img }}">
+        {% endfor %}
+    </div>
 </body>
 </html>

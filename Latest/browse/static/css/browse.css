@@ -190,15 +190,17 @@ header .header-right li a {
 .presentation .play:hover, .pr-episode .play:hover {
     background-color: #bbb;
 }
-.presentation .add {
+.presentation .add, .presentation .remove {
     margin-left: 20px;
-    font-size: 16px;
-    color: #eee;
     border: solid 2px #eee;
     background-color: transparent;
     border-radius: 50%;
     width: 40px;
     height: 40px;
+}
+.presentation .add a, .presentation .remove a {
+    font-size: 16px;
+    color: #eee;
 }
 .presentation .add:hover {
     border: solid 1px #eee;
