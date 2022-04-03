@@ -14,7 +14,10 @@ def watchlist(request):
     return render(request, "watchlist.html", context=filter.get_watch_list())
 
 def add_to_watchlist(request, genre, id):
-    return render(request, "watchlist.html", context=filter.add_to_list(genre, id))
+    return render(request, genre+".html", context=filter.add_to_list(genre, id))
+
+def remove_from_watchlist(request, genre, id):
+    return render(request, genre+".html", context=filter.remove_from_list(genre, id))
 
 
 def popular(request):

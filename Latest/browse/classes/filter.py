@@ -253,8 +253,17 @@ def add_to_list(genre, id):
     if genre == 'movie':
         new = Watchlist_DB(id, id, None)
         new.save()
+        return Movie(id).context()
     else:
         new = Watchlist_DB(id, None, id)
         new.save()
     
-    return get_watch_list()
+
+def remove_from_list(genre, id):
+    if genre == 'movie':
+        Watchlist_DB.objects.get(movie=id).delete()
+        return Movie(id).context()
+    else:
+        new = Watchlist_DB(id, None, id)
+        new.save()
+    
