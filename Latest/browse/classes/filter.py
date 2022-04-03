@@ -103,7 +103,7 @@ def movie_in_db() -> object :
     Out : movies : liste d'instances de la classe Movie
     """
     movies = []
-    for movie in Movie_DB.objects.filter(status='clicked'):
+    for movie in Movie_DB.objects.filter(status='clicked').order_by('-date'):
         movies.append(Movie(movie.id))
 
     return movies
@@ -115,7 +115,7 @@ def serie_in_db() -> object :
     Out :  series : liste d'instances de la classe Serie
     """
     series = []
-    for serie in Serie_DB.objects.filter(status='clicked'):
+    for serie in Serie_DB.objects.filter(status='clicked').order_by('-date'):
         series.append(Serie(serie.id))
 
     return series
