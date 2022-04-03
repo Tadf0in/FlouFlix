@@ -143,7 +143,7 @@ def search_movie(query:str) -> (list, int) :
     api_url = f"http://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=fr&query={query}"
     api_response = r.get(api_url).json()
 
-    max_popularity = api_response['results'][0]['popularity']
+    max_popularity = api_response['results'][0]['popularity'] if api_response['results'] != [] else 0
 
     movies = []
     for result in api_response['results']:
@@ -160,8 +160,8 @@ def search_serie(query:str) -> (list, int) :
     """
     api_url = f"http://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=fr&query={query}"
     api_response = r.get(api_url).json()
-
-    max_popularity = api_response['results'][0]['popularity']
+    print(api_response)
+    max_popularity = api_response['results'][0]['popularity'] if api_response['results'] != [] else 0
 
     series = []
     for result in api_response['results']:
