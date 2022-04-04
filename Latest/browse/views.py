@@ -50,8 +50,8 @@ def search(request):
 
 
 def watch_movie(request, id):
-    return render(request, "watch.html", context={ 'key': get_movie_video(id) })
+    return render(request, "watch.html", context={ 'key': filter.get_movie_video(id) })
 
 
 def watch_serie(request, id, season_num, episode_num):
-    return render(request, "watch.html", context={ 'key': get_episode_video(id, season_num, episode_num) })
+    return render(request, "watch.html", context={ 'key': filter.get_episode_video(id, season_num, episode_num) })
