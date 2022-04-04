@@ -1,0 +1,250 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #111;
+    color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20vh;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header a {
+    text-decoration: none;
+}
+header h1 {
+    color: red;
+    padding-left: 50px;
+}
+header ul {
+    list-style: none;
+    display: flex;
+}
+header .header-left {
+    display: flex;
+    align-items: center;
+}
+header .header-left li a {
+    color: #eee;
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 30px;
+    transition: 0.5s;
+}
+header .header-left li a:hover, header .header-right li a:hover {
+    color: #bbb;
+}
+header .header-right {
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+}
+.header-right ul {
+    display: flex;
+    align-items: center;
+}
+.header-right form {
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+.header-right form input {
+    color: #eee;
+    padding: 0 5px;
+    display: flex;
+    margin-right: 10px;
+    background-color: #111;
+    border: solid 1px #eee;
+    border-radius: 5px;
+    height: 100%;
+}
+header .header-right li a {
+    color: #eee;
+    font-size: 15px;
+    font-weight: 600;
+    padding-right: 30px;
+    transition: 0.3s;
+}
+
+
+.content {
+    padding: 20px;
+}
+
+
+.movies, .series, .upcoming {
+    height: 550px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.movie, .serie, .upcoming-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 15px;
+    color: #eee;
+    text-decoration: none;
+}
+.movie-title, .serie-title, .upcoming-movie-title {
+    padding-top: 10px;
+    font-weight: 700;
+}
+.index img, .upcoming img, .latest-movie img, .latest-serie img {
+    height: 350px;
+    width: 250px;
+    transition: 0.2s ease-out;
+}
+.index img:hover, .upcoming img:hover {
+    height: 560px;
+    width: 400px;
+}
+
+
+.latest-div {
+    display: flex;
+}
+.latest-movie, .latest-serie {
+    width: 49%;
+}
+
+.search, .watchlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search form {
+    width: 80%;
+}
+.search-bar {
+    width: 100%;
+}
+.results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+.results img {
+    height: 350px;
+    width: 250px;
+}
+.results img:hover {
+    height: 346px;
+    width: 246px;
+}
+
+
+.presentation {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.presentation-left, .presentation-right {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 10px;
+}
+.presentation-left {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.presentation img {
+    width: 400px;
+    height: 560px;
+}
+.presentation-right {
+    margin-top: 65px;
+}
+.presentation p {
+    text-align: justify;
+}
+.presentation .date {
+    margin-top: 20px;
+}
+.presentation .no {
+    margin-top: 10px;
+}
+.presentation .buttons {
+    margin-top: 40px;
+}
+.presentation .play, .pr-episode .play{
+    text-decoration: none;
+    color: #111;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    font-weight: bold;
+}
+.presentation .play:hover, .pr-episode .play:hover {
+    background-color: #bbb;
+}
+.presentation .add, .presentation .remove {
+    margin-left: 20px;
+    border: solid 2px #eee;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.presentation .add a, .presentation .remove a {
+    font-size: 16px;
+    color: #eee;
+}
+.presentation .add:hover {
+    border: solid 1px #eee;
+}
+.pr-saison-episodes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pr-saison p {
+    margin-top: 40px;
+}
+.pr-saison select {
+    background-color: #222;
+    color: #eee;
+    border: solid 1px #eee;
+    border-radius: 5px;
+    padding: 5px;
+    width: 150px;
+    height: 40px;
+}
+.pr-episodes {
+    margin-top: 100px;
+    list-style: none;
+}
+.pr-episode {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+.pr-episode-left, .pr-episode-right {
+    width: 40%;
+    margin: 0 10px;
+}
+.pr-episode p {
+    margin: 60px 0;
+}
+.pr-episode .play {
+    font-size: 13px;
+}
+
+
+.watch {
+    display: flex;
+    justify-content: center;
+}
