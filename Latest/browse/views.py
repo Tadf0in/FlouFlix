@@ -7,7 +7,7 @@ import browse.classes.filter as filter
 
 
 def index(request):
-    return render(request, "index.html", context=filter.total_in_db())
+    return render(request, "index.html", context=filter.total_in_db('owned'))
 
 
 def watchlist(request):

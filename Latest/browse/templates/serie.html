@@ -24,7 +24,7 @@
             <span class="no">{{ no_seasons }} saisons / {{ no_episodes }} episodes</span>
             <span class="buttons">
                 <a href="/browse/serie/{{ id }}/S1" class="play">Voir les épisodes</a>
-                {% if is_in_watchlist %}
+                {% if status == 'listed' %}
                     <button class="add"><a href="/remove/serie/{{ id }}"><i class="fa-solid fa-check"></i></a></button>
                 {% else %}    
                     <button class="add"><a href="/add/serie/{{ id }}"><i class="fa-solid fa-plus"></i></a></button>

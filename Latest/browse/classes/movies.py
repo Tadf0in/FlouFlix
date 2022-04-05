@@ -1,7 +1,6 @@
 import requests as r
 from .config import API_KEY
 from browse.models import Movie as DB_Movie
-from browse.models import Watchlist as DB_Watchlist
 
 
 class Movie:
@@ -21,18 +20,11 @@ class Movie:
             self._description = db.description
             self._img = db.img
             self._date = db.date
-
-            try:
-                # Si dans la WatchList
-                wl = DB_Watchlist.objects.get(movie=id)
-                self.is_in_watchlist = True
-            except DB_Watchlist.DoesNotExist:
-                # Si pas dans la WatchList
-                self.is_in_watchlist = False
+            self._status = db.status
             
         except DB_Movie.DoesNotExist:
             # Si pas dans la BDD
-            self.is_in_watchlist = False
+            self._status = 'temp'
             self.api() # Récupère les infos dans l'api
             self.to_db('temp') # AJoute dans la BDD
 
@@ -79,24 +71,30 @@ class Movie:
     def date(self):
         return self._date
 
+    @property
+    def status(self):
+        return self._status
+
 
     def context(self) -> dict :
         """ Renvoie sous forme de dictionnaire pour pouvoir être utilisé dans les templates.
         In : self
         Out : dictionnaire contenant des informations sur le film
         """
-        self.to_db('clicked')
+        if self.status == 'temp':
+            self.to_db('clicked')
 
         return {
-            "is_in_watchlist": self.is_in_watchlist,
             "id": self.id,
             "title": self.title,
             "description": self.description,
             "img": self.img,
             "date": self.date,
+            "status": self.status,
         }
 
 
     def to_db(self, status):
+        self._status = status
         new_movie = DB_Movie(self.id, self.title, self.description, self.img, self.date, status)
         new_movie.save()
