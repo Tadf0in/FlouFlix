@@ -2,6 +2,7 @@ import requests as r
 from .config import API_KEY
 from .movies import Movie
 from .series import Serie
+from .files import get_total_dir
 from browse.models import Movie as Movie_DB
 from browse.models import Serie as Serie_DB
 

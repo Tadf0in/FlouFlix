@@ -14,6 +14,11 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
 ## Changelog
 
+- **V6** &nbsp;&nbsp; *Récupération des fichiers*
+
+  * Suppression de la table WatchList dans la BDD -> status 'listed' dans les tables Movie et Serie
+  * Récupère les fichiers vidéos dans les dossiers 'browse/static/films' et 'browse/static/series'
+
 - **V5** &nbsp;&nbsp; *Mise en place de la WatchList*
 
   * Algorithme de recherche amélioré : sort la catégorie la plus populaire en 1er
