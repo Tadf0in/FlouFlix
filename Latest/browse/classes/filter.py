@@ -2,9 +2,10 @@ import requests as r
 from .config import API_KEY
 from .movies import Movie
 from .series import Serie
-from .files import get_total_dir
 from browse.models import Movie as Movie_DB
 from browse.models import Serie as Serie_DB
+from browse.models import Watchlist as Watchlist_DB
+
 
 
 def movie_popular() -> list :
@@ -97,40 +98,41 @@ def upcoming():
     }
 
 
-def movie_in_db(status) -> object :
+def movie_in_db() -> object :
     """ Va chercher les films présents dans la base de données.
     In : rien
     Out : movies : liste d'instances de la classe Movie
     """
     movies = []
-    for movie in Movie_DB.objects.filter(status=status).order_by('-date'):
+    for movie in Movie_DB.objects.filter(status='clicked').order_by('-date'):
         movies.append(Movie(movie.id))
 
     return movies
 
 
-def serie_in_db(status) -> object :
+def serie_in_db() -> object :
     """ Va chercher les séries présentes dans la base de données.
     In : rien
     Out :  series : liste d'instances de la classe Serie
     """
     series = []
-    for serie in Serie_DB.objects.filter(status=status).order_by('-date'):
+    for serie in Serie_DB.objects.filter(status='clicked').order_by('-date'):
         series.append(Serie(serie.id))
 
     return series
     
 
-def total_in_db(status) -> dict :
+
+def total_in_db() -> dict :
     """ Retourne les films et les séries présents dans la base de données.
     In : rien
     Out : dictionnaire contennant 2 listes d'instances des classes Movie et Serie
     """
-    get_total_dir()
     return {
-        'movies': movie_in_db(status),
-        'series': serie_in_db(status),
+        'movies': movie_in_db(),
+        'series': serie_in_db(),
     }
+
 
 
 def search_movie(query:str) -> (list, int) :
@@ -232,12 +234,14 @@ def get_episode_video(id:int, season_num:int, episode_num:int) -> str :
 
 
 def get_watch_list():
-    movies_db = Movie_DB.objects.filter(status='listed')
-    movies = [Movie(movie.id) for movie in movies_db]
-
-    series_db = Serie_DB.objects.filter(status='listed')
-    series = [Serie(serie.id) for serie in series_db]
-
+    ids = Watchlist_DB.objects.all()
+    movies = []
+    series = []
+    for id in ids:
+        if id.movie != None:
+            movies.append(id.movie)
+        elif id.serie != None:
+            series.append(id.serie)
     return {
         'movies': movies,
         'series': series,
@@ -246,23 +250,20 @@ def get_watch_list():
 
 def add_to_list(genre, id):
     if genre == 'movie':
-        movie = Movie(id)
-        movie.to_db('listed')
-        return movie.context()
+        new = Watchlist_DB(id, id, None)
+        new.save()
+        return Movie(id).context()
     else:
-        serie = Serie(id)
-        serie.to_db('listed')
-        return serie.context()
+        new = Watchlist_DB(id, None, id)
+        new.save()
+        return Serie(id).context()
 
 
 def remove_from_list(genre, id):
     if genre == 'movie':
-        movie = Movie(id)
-        movie.to_db('clicked')
-        return movie.context()
+        Watchlist_DB.objects.get(movie=id).delete()
+        return Movie(id).context()
     else:
-        serie = Serie(id)
-        serie.to_db('clicked')
-        return serie.context()
-
+        Watchlist_DB.objects.get(serie=id).delete()
+        return Serie(id).context()
     

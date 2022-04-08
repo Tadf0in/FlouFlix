@@ -51,3 +51,19 @@ class Serie(models.Model):
     class Meta:
         managed = False
         db_table = 'Serie'
+
+
+class Watchlist(models.Model):
+    """
+    Crée une table 'WatchList' dans la base de données
+
+    Paire (id, null) ou (null, id) pour savoir si l'id est celui d'un film ou d'une série
+    """
+    # Création de chaque colonne de la table
+    id = models.AutoField(primary_key=True)
+    movie = models.ForeignKey('Movie', null=True, on_delete=models.CASCADE) # clé étrangère : Movie.id
+    serie = models.ForeignKey('Serie', null=True, on_delete=models.CASCADE) # clé étrangère : Serie.id
+
+    class Meta:
+        managed = False
+        db_table = 'WatchList'
