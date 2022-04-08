@@ -2,6 +2,7 @@ import requests as r
 import json
 from .config import API_KEY
 from browse.models import Serie as DB_Serie
+from browse.models import Watchlist as DB_Watchlist
 
 
 class Serie:
@@ -20,11 +21,18 @@ class Serie:
             self._date = db.date
             self._no_seasons = db.no_seasons
             self._no_episodes = db.no_episodes
-            self._status = db.status
+
+            try:
+                # Si dans la WatchList
+                wl = DB_Watchlist.objects.get(serie=id)
+                self.is_in_watchlist = True
+            except DB_Watchlist.DoesNotExist:
+                # Si pas dans la WatchList
+                self.is_in_watchlist = False
             
         except DB_Serie.DoesNotExist:
             # Si pas dans la BDD
-            self._status = 'temp'
+            self.is_in_watchlist = False
             self.api() # Récupère les infos dans l'api
             self.to_db('temp') # AJoute dans la BDD
 
@@ -78,20 +86,16 @@ class Serie:
     def no_episodes(self):
         return self._no_episodes
 
-    @property
-    def status(self):
-        return self._status
-
     
     def context(self) -> dict :
         """ Renvoie sous forme de dictionnaire pour pouvoir être utilisé dans les templates.
         In : self
         Out : dictionnaire contenant des informations sur la série
         """
-        if self.status == 'temp':
-            self.to_db('clicked')
+        self.to_db('clicked')
 
         return {
+            "is_in_watchlist": self.is_in_watchlist,
             "id": self.id,
             "name": self.name,
             "description": self.description,
@@ -99,12 +103,10 @@ class Serie:
             "date": self.date,
             "no_seasons": self.no_seasons,
             "no_episodes": self.no_episodes,
-            "status": self.status,
         }
 
     
     def to_db(self, status):
-        self._status = status
         new_serie = DB_Serie(self.id, self.name, self.description, self.img, self.date, self.no_seasons, self.no_episodes, status)
         new_serie.save()
 
