@@ -1,5 +1,9 @@
 <div align="center"><img src="Latest/doc/img/flouflix.png"></img></div>
 
+## Présentation
+
+FlouFlix est un site internet présentant un catalogue complet de bandes annonces de Film et séries où l'on peut avoir une seule WatchList regroupant tous les films et séries sans se soucier de la plateforme VOD.
+
 <br>
 
 ## Prérequis
