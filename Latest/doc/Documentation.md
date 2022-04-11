@@ -19,6 +19,7 @@ FlouFlix est un site internet présentant un catalogue complet de bandes annonce
 
   * Documentation
   * Fiches problème
+  * Debug = False
 
 <br>
 
