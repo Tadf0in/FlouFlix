@@ -8,7 +8,9 @@ FlouFlix est un site internet présentant un catalogue complet de bandes annonce
 
 ## Prérequis
 
-Sous browse/classes/ crée un fichier intitulé **config.py** qui contiendra la clé d'api :
+Sous **browse/classes/** crée un fichier intitulé **config.py** qui contiendra la clé d'api :
+<br>
+(générable à l'adresse suivante : https://www.themoviedb.org/settings/api)
 
 ##### config.py
 ``` config.py
