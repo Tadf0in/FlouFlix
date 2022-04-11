@@ -8,7 +8,8 @@
 
 ## Présentation
 
-FlouFlix est un site internet présentant un catalogue complet de Film et séries où l'on peut avoir une seule WatchList regroupant toutes les plateformes VOD.
+FlouFlix est un site internet présentant un catalogue complet de bandes annonces de Film et séries où l'on peut avoir une seule WatchList regroupant tous les films et séries sans se soucier de la plateforme VOD.
+
 
 <br>
 
@@ -52,8 +53,8 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
 
   * Création des classes : Serie, Season et Episode
   * L'application django 'movie' devient l'application plus générale 'browse', qui ne contiendra pas que les films
-  * Ajout de la page browse/serie/$id$ qui récupère les informations sur une série (dont l'id est précisé dans l'url) et les affiches
-  * Ajout de la page browse/serie/$id$/S$num$ qui récupère les informations sur une saison (dont le numéro et l'id sont précisé dans l'url) et les affiches ainsi que la listes de tous les épisodes
+  * Ajout de la page browse/serie/*id* qui récupère les informations sur une série (dont l'id est précisé dans l'url) et les affiches
+  * Ajout de la page browse/serie/*id*/S*num* qui récupère les informations sur une saison (dont le numéro et l'id sont précisé dans l'url) et les affiches ainsi que la listes de tous les épisodes
   * Ajout d'un favicon (+ gestion du dossier 'static')
 
 <br>
@@ -63,7 +64,7 @@ FlouFlix est un site internet présentant un catalogue complet de Film et série
   * Initialisation du projet django
   * Création de l'application django intitulée 'movie'
   * Création de la classe Movie
-  * Ajout de la page movie/$id$ qui récupère les informations sur un film (dont l'id est précisé dans l'url) et les affiches
+  * Ajout de la page movie/*id* qui récupère les informations sur un film (dont l'id est précisé dans l'url) et les affiches
 
 <br>
 
@@ -80,7 +81,7 @@ Gestion de la BDD :
 
 A chaque fois qu'un film/série est récupéré dans l'API, il est ajouté dans la BDD avec un statut temporaire ('temp') pour qu'il soit chargé plus rapidement la prochaine fois en évitant d'envoyer une nouvelle requête inutile à l'API.
 Si on clique sur un film/série, ce dernier passe au statut consulté ('clicked') dans la BDD. <br>
-La page d'accueil du site affiche seulement les films/série consultés.
+La page d'accueil du site affiche seulement les films/série consultés (qui ont le status 'clicked').
 
 Fonctionnement général :
 
