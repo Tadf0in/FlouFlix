@@ -33,6 +33,8 @@ Packages python utilisés :
  pip install windows_curses==2.0.3
  ```
 
+ <br>
+
 ## Documentation
 [Documentation.md](doc/Documentation.md)
 
