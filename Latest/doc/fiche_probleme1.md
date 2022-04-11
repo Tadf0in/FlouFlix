@@ -17,7 +17,7 @@ En regardant plus en détail l'erreur, on observe que l'erreur survient lors de 
 J'ai alors vérifier la base de données, le champ date était bien de type *Date* est donc n'accepte que des entrées de la forme YYYY-MM-DD, ce que l'erreur nous disais déjà.
 
 L'erreur doit donc venir du format de la date rentrée. <br>
-En effet, en examinant la requête api directement dans le navigateur, on observer qu'un des films correspondant à la recherche n'est pas renseigné de sa date de sortie : ![](img/date_probleme_api.png).
+En effet, en examinant la requête api directement dans le navigateur, on observer qu'un des films correspondant à la recherche n'est pas renseigné de sa date de sortie : ![](img/date_probleme_api.png)
 
 L'erreur vient donc de là.
 
