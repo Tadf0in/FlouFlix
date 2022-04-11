@@ -15,6 +15,13 @@ FlouFlix est un site internet présentant un catalogue complet de bandes annonce
 
 ## Changelog
 
+- **V6** &nbsp;&nbsp; *Version finale*
+
+  * Documentation
+  * Fiches problème
+
+<br>
+
 - **V5** &nbsp;&nbsp; *Mise en place de la WatchList*
 
   * Algorithme de recherche amélioré : sort la catégorie la plus populaire en 1er
@@ -92,4 +99,5 @@ Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  :
 ![](img/search.png)
 
 Schéma de la BDD :
+
 ![](img/BDD.png)
