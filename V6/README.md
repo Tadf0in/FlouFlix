@@ -1,4 +1,4 @@
-<div align="center"><img src="Latest/doc/img/flouflix.png"></img></div>
+<div align="center"><img src="doc/img/flouflix.png"></img></div>
 
 ## Présentation
 
