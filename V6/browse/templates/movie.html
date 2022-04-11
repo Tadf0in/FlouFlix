@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/browse.css' %}">
+    <title>FlouFlix</title>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="content presentation pr-movie">
+        <div class="presentation-left">
+            <h2>{{ title }}</h2>
+            <img src={{ img }}>      
+        </div>
+        <div class="presentation-right">
+            <p>{{ description }}</p>
+            <span class="date">{{ date }}</span>
+            <span class="buttons">
+                <a href="/watch/movie/{{ id }}" class="play"><i class="fa-solid fa-play"></i> &nbsp;Lecture</a>
+                {% if is_in_watchlist %}
+                    <button class="add"><a href="/remove/movie/{{ id }}"><i class="fa-solid fa-check"></i></a></button>
+                {% else %}    
+                    <button class="add"><a href="/add/movie/{{ id }}"><i class="fa-solid fa-plus"></i></a></button>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</body>
+</html>
