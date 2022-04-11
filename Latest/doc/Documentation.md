@@ -90,3 +90,6 @@ Fonctionnement général :
 Exemple shcématisé du fonctionnement de la BDD avec la barre de recherche  :
 
 ![](img/search.png)
+
+Schéma de la BDD :
+![](img/BDD.png)
