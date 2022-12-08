@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/browse.css' %}">
+    <title>FlouFlix</title>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="content presentation pr-serie">
+        <div class="presentation-left">
+            <h2>{{ name }}</h2>
+            <img src={{ img }}>      
+        </div>
+        <div class="presentation-right">
+            <p>{{ description }}</p>
+            <span class="date">{{ date }}</span>
+            <span class="no">{{ no_seasons }} saisons / {{ no_episodes }} episodes</span>
+            <span class="buttons">
+                <a href="/browse/serie/{{ id }}/S1" class="play">Voir les épisodes</a>
+                {% if is_in_watchlist %}
+                    <button class="add"><a href="/remove/serie/{{ id }}"><i class="fa-solid fa-check"></i></a></button>
+                {% else %}    
+                    <button class="add"><a href="/add/serie/{{ id }}"><i class="fa-solid fa-plus"></i></a></button>
+                {% endif %}
+            </span>
+        </div>
+        
+    </div>
+</body>
+</html>
